@@ -1,0 +1,53 @@
+.label {
+    display: table;
+    width: 100%;
+}
+
+.control {
+    position: relative;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.label {
+    display: table-cell;
+    width: 100%;
+    padding-left: 15px;
+    vertical-align: top;
+}
+
+.checkbox {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    border: 1px solid #ff8000;
+    border-radius: 2px;
+    text-align: center;
+    background-color: transparent;
+
+    & > svg {
+        visibility: hidden;
+    }
+}
+
+.input {
+    position: absolute;
+    z-index: -1;
+    visibility: hidden;
+
+    &:checked {
+        & + .checkbox {
+            background-color: #ff8000;
+
+            & > svg {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+.error {
+    margin-top: 5px;
+    color: #ff2020;
+    font-size: 11px;
+}

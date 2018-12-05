@@ -1,0 +1,9 @@
+{
+  "ignore": [
+    "pages/*",
+    ".next/*"
+  ],
+  "execMap": {
+    "js": "babel-node"
+  }
+}

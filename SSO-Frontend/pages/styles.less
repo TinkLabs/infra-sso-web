@@ -1,0 +1,56 @@
+@import (reference) "~bootstrap/less/mixins.less";
+
+.logo {
+    margin-top: 70px;
+    text-align: center;
+
+    & > img {
+        width: 125px;
+    }
+}
+
+.slogan {
+    margin-top: 30px;
+    font-size: 25px;
+    text-align: center;
+
+    & > .caption {
+        margin-top: 15px;
+        font-size: 15px;
+    }
+}
+
+.buttons {
+    margin-top: 70px;
+
+    .facebook {
+        margin-bottom: 10px;
+        background: #3b5998 url('/static/icons/facebook.png') no-repeat 16px 8px;
+        background-size: 32px 32px;
+    }
+
+    .google {
+        margin-bottom: 10px;
+        background: #dc4e41 url('/static/icons/google.png') no-repeat 16px 8px;
+        background-size: 32px 32px;
+    }
+
+    .email {
+        border: 1px solid #ff8400;
+        margin-bottom: 10px;
+        color: #ff8400;
+        background-color: transparent;
+    }
+}
+
+.signIn {
+    color: #757c87;
+    font-size: 13px;
+    .clearfix();
+
+    & > a {
+        float: right;
+        color: #ff8400;
+        text-decoration-line: none;
+    }
+}
