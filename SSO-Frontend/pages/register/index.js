@@ -51,14 +51,24 @@ class RegisterPage extends Component {
         values.appid= this.props.clientId;
         setSubmitting(true);
         axios.post(`https://sso-uat.handytravel.tech/v1/user/quickRegister`, values)
-            .then(({data: {data}}) => {
-                this.setState({submitted: true});
-                values.jwt=data;
-                //注册成功后
+            .then(({data: {retCode,retMsg,data}}) => {
+                if(retCode !== "200"){
+                    setErrors({form: retMsg});
+                }else {
+                    if(data) {
+                        //注册成功后
+                        this.setState({submitted: true});
+                        values.jwt = data;
+                    }else {
+                        setErrors({form: retMsg});
+                    }
+                }
+
+
 
             })
             .catch(({response: {data: {retCode, retMsg}}}) => {
-                
+
                 if (retCode === '200023') {
                     setErrors({email: t(`Email has  been used.`)});
                 } else if(retCode==='207002'){
@@ -66,17 +76,15 @@ class RegisterPage extends Component {
                 } else if(retCode==='200012'){
                     setErrors({password: t(`Password length is at least at 8`)});
                 } else if(retCode==='200001'){
-                    setErrors({password: t(`The Email length is at least 8 when registering`)});
+                    setErrors({email: t(`The Email length is at least 8 when registering`)});
                 } else if(retCode==='200002'){
-                    setErrors({password: t(`Sorry, the email exceeds the length 64 when registering.`)});
+                    setErrors({email: t(`Sorry, the email exceeds the length 64 when registering.`)});
                 } else if(retCode==='200013'){
                     setErrors({password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.`)});
-                } else if(retCode==='200041'){
-                    setErrors({password: t(`Security question list can't be empty when registering.`)});
                 } else if(retCode==='200051'){
-                    setErrors({password: t(`Failed to send the email when registering.`)});
+                    setErrors({form: t(`Failed to send the email when registering.`)});
                 } else if(retCode==='200003'){
-                    setErrors({password: t(`The username only can contains the letters, numbers when registering.`)});
+                    setErrors({email: t(`The username only can contains the letters, numbers when registering.`)});
                 } else{
                     setErrors({form: retMsg});
                 }
@@ -158,7 +166,7 @@ class RegisterPage extends Component {
                     <Button type="submit" disabled={isSubmitting}>{t(`CREAT ACCOUNT`)}</Button>
                 </Footer>}
                 {submitted && <Footer>
-                    <Button type="button" href={process.env.URL+`?jwt=`+values.jwt}>{t(`COMPLETE`)}</Button>
+                    <Button type="button" href={`?jwt=`+values.jwt}>{t(`COMPLETE`)}</Button>
                 </Footer>}
             </Container>
         );

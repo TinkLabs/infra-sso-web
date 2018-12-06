@@ -64,11 +64,13 @@ class ForgotPasswordPage extends Component {
             setSubmitting(true);
             
             axios.post('https://sso-uat.handytravel.tech/v1/service/sendVerificationCode', values)
-                .then(() => {
-                    //return app.render(req, res, '/', req.query);
-                    this.setState({submitted: 1});
-                    setSubmitting(false);
-                    
+                .then(({data: {retCode,retMsg,data}}) => {
+                    if(retCode !== "200"){
+                        setErrors({form: retMsg});
+                    }else {
+                        this.setState({submitted: 1});
+                        setSubmitting(false);
+                    }
                 })
                 .catch(({response: {data: {retCode, retMsg}}}) => {
                     console.log(retCode);
@@ -77,7 +79,7 @@ class ForgotPasswordPage extends Component {
                     } else if (retCode === '203041') {
                         setErrors({password: t(`Failed to send verification code email when sending verification code.`)});
                     } else if (retCode === '207002') {
-                        setErrors({password: t(`No APP ID ,please call customer services.`)});
+                        setErrors({form: t(`No APP ID ,please call customer services.`)});
                     } else {
                         setErrors({form: retMsg});
                     }
@@ -85,7 +87,7 @@ class ForgotPasswordPage extends Component {
                 .finally(() => {
                     setSubmitting(false);
                 });
-            }
+        }
             //verify code
         if(this.state.submitted===1) {
             setSubmitting(true);
@@ -93,30 +95,36 @@ class ForgotPasswordPage extends Component {
             values.username=values.email;
             values.verificationCode=values.code;
             axios.post('https://sso-uat.handytravel.tech/v1/user/getUpdatePwdToken', values)
-                .then(() => {
-                    //return app.render(req, res, '/', req.query);
-                    this.setState({submitted: 2});
-                    setSubmitting(false);
+                .then(({data: {retCode,retMsg,data}}) => {
+                    if(retCode !== "200"){
+                        setErrors({code: retMsg});
+                    }else {
+                        values.updatePwdToken = data.updatePwdToken;
+
+
+                        this.setState({submitted: 2});
+                        setSubmitting(false);
+                    }
                 })
                 .catch(({response: {data: {retCode, retMsg}}}) => {
                     if (retCode === '202009') {
-                        setErrors({email: t(`Please enter an valid code.`)});
+                        setErrors({code: t(`Please enter an valid code.`)});
                     } else if (retCode === '207002') {
-                        setErrors({password: t(`No APP ID ,please call customer services.`)});
+                        setErrors({form: t(`No APP ID ,please call customer services.`)});
                     } else if (retCode === '202004') {
-                        setErrors({password: t(`Email is not registered.`)});
+                        setErrors({code: t(`Email is not registered.`)});
                     } else if (retCode === '202005') {
-                        setErrors({password: t(`oldPassword is invalid, please fill in the correct oldPassword.`)});
+                        setErrors({code: t(`oldPassword is invalid, please fill in the correct oldPassword.`)});
                     } else if (retCode === '202006') {
-                        setErrors({password: t(`Sorry, This newPassword no change, please fill in the newPassword.`)});
+                        setErrors({code: t(`Sorry, This newPassword no change, please fill in the newPassword.`)});
                     } else if (retCode === '202009') {
-                        setErrors({password: t(`Sorry, verification code verified failed.`)});
+                        setErrors({code: t(`Sorry, verification code verified failed.`)});
                     } else if (retCode === '202012') {
-                        setErrors({password: t(`you has not set security problem，please select other type. `)});
+                        setErrors({code: t(`you has not set security problem，please select other type. `)});
                     } else if (retCode === '202007') {
-                        setErrors({password: t(`The phone type Temporarily not supported , please correct type. `)});
+                        setErrors({code: t(`The phone type Temporarily not supported , please correct type. `)});
                     } else if (retCode === '202008') {
-                        setErrors({password: t(`The type incorrect , please correct type. `)});
+                        setErrors({code: t(`The type incorrect , please correct type. `)});
                     } else {
                         setErrors({form: retMsg});
                     }
@@ -128,15 +136,35 @@ class ForgotPasswordPage extends Component {
         //reset password
         if(this.state.submitted===2) {
             setSubmitting(true);
-            axios.post('http://10.0.2.20:8080/v1/user/verificationAccount', values)
-                .then(() => {
+            values.newPassword = values.password;
+            axios.post('https://sso-uat.handytravel.tech/v1/user/resetPwd', values)
+                .then(({data: {retCode,retMsg,data}}) => {
                     //return app.render(req, res, '/', req.query);
-                    window.location = '/authorize';
-                    
+                    // window.location = '/authorize';
+                    if(retCode !== "200"){
+                        setErrors({password: retMsg});
+                        setErrors({confirm_password: retMsg});
+                    }else {
+                        this.setState({submitted: 3});
+
+
+
+                    }
+
                 })
                 .catch(({response: {data: {retCode, retMsg}}}) => {
                     if (retCode === '60001') {
-                        setErrors({email: t(`Email is not submitted.`)});
+                        setErrors({form: t(`Email is not submitted.`)});
+                    } else if (retCode === '207002') {
+                        setErrors({form: t(`No APP ID ,please call customer services.`)});
+                    } else if (retCode === '202004') {
+                        setErrors({form: t(`Email is not registered.`)});
+                    } else if(retCode==='200012'){
+                        setErrors({password: t(`Password length is at least at 8`)});
+                        setErrors({confirm_password: t(`Password length is at least at 8`)});
+                    } else if(retCode==='200013'){
+                        setErrors({password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.`)});
+                        setErrors({confirm_password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.`)});
                     } else {
                         setErrors({form: retMsg});
                     }
@@ -165,6 +193,7 @@ class ForgotPasswordPage extends Component {
                     {submitted===0 && <span>{t(`Forgot Password`)}</span>}
                     {submitted===1 && <span>{t(`Reset password Code  has been sent`)}</span>}
                     {submitted===2 && <span>{t(`Please input your new Password`)}</span>}
+                    {submitted===3 && <span>{t(`Your password has been reset `)}</span>}
                 </Header>
                 <Content>
                     {submitted===0 && <div className={styles.remark}>
@@ -177,6 +206,10 @@ class ForgotPasswordPage extends Component {
                     }
                     {submitted===2 && <div className={styles.remark}>
                         {t(`After reset your password ,you will be redirect to Login page and login again.`)}
+                    </div>
+                    }
+                    {submitted===3 && <div className={styles.remark}>
+                        {t(`Your password for handy member has been successfully rest. You are now logged in — you can continue using handy, or visit My Account to edit your personal profile.`)}
                     </div>
                     }
 
@@ -231,14 +264,14 @@ class ForgotPasswordPage extends Component {
                     </div>
 
                 </Content>
-                {submitted===3 && <Content>
-                    {t(`An e-mail with the reset password link has been sent to:`)}
-                    <br/><br/><br/><br/>
-                    {values.email}
-                    <br/><br/><br/><br/>
-                    {t(`Please check your email for further reset password instructions. The reset password link will expire in 24 hours for security reasons.`)}
-                    <br/><br/><br/><br/>
-                </Content>}
+                {/*{submitted===3 && <Content>*/}
+                    {/*{t(`An e-mail with the reset password link has been sent to:`)}*/}
+                    {/*<br/><br/><br/><br/>*/}
+                    {/*{values.email}*/}
+                    {/*<br/><br/><br/><br/>*/}
+                    {/*{t(`Please check your email for further reset password instructions. The reset password link will expire in 24 hours for security reasons.`)}*/}
+                    {/*<br/><br/><br/><br/>*/}
+                {/*</Content>}*/}
                 {submitted===0 && <Footer>
                     <Button type="submit" disabled={isSubmitting}>{t(`SEND ME THE LINK`)}</Button>
                 </Footer>}
@@ -247,6 +280,9 @@ class ForgotPasswordPage extends Component {
                 </Footer>}
                 {submitted===2 && <Footer>
                     <Button type="submit" disabled={isSubmitting}>{t(`RESET PASSWORD`)}</Button>
+                </Footer>}
+                {submitted===3 && <Footer>
+                    <Button type="button" href={`/authorize?appid=`+ values.appid}>{t(`COMPLETE`)}</Button>
                 </Footer>}
             </Container>
         );

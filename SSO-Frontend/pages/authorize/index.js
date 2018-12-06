@@ -38,26 +38,28 @@ class AuthorizePage extends Component {
 
         setSubmitting(true);
         axios.post('https://sso-uat.handytravel.tech/v1/user/login', values)
-            .then(({data: {data}}) => {
-                window.location = `${process.env.URL}?jwt=`+data;
-                //window.location = `http://10.0.2.176:4000/?jwt=`+data;
-                //app.render(req, res, '/', req.query);
-                //登录成功后
-                //console.log(data);
-
-                // this data should be the token .
-                
+            .then(({data: {retCode,retMsg,data}}) => {
+                if(retCode !== "200"){
+                    setErrors({form: retMsg});
+                }else {
+                    if(data) {
+                        //登录成功后
+                        window.location = `?jwt=`+data;
+                    }else {
+                        setErrors({form: retMsg});
+                    }
+                }
             })
             .catch(({response: {data: {retCode, retMsg}}}) => {
                 console.log(retCode);
                 if (retCode === '201012') {
                     setErrors({password: t(`The password is not correct.`)});
                 } else if (retCode === '207002') {
-                    setErrors({password: t(`No APP ID ,please call customer services.`)});
+                    setErrors({form: t(`No APP ID ,please call customer services.`)});
                 } else if (retCode === '201001') {
-                    setErrors({password: t(`Sorry, the email is not existed, please register firstly.`)});
+                    setErrors({email: t(`Sorry, the email is not existed, please register firstly.`)});
                 } else if (retCode === '201013') {
-                    setErrors({password: t(`Duplicated account, please contact the administrator`)});
+                    setErrors({email: t(`Duplicated account, please contact the administrator`)});
                 } else{
                     setErrors({form: retMsg});
                 }

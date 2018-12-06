@@ -62,11 +62,18 @@ class RegisterQPage extends Component {
         values.appid= this.props.clientId;
         setSubmitting(true);
         axios.post(`https://sso-uat.handytravel.tech/v1/user/quickRegister`, values)
-        .then(({data: {data}}) => {
-            this.setState({submitted: true});
-            values.jwt=data;
-            //注册成功后
-
+            .then(({data: {retCode,retMsg,data}}) => {
+                if(retCode !== "200"){
+                    setErrors({form: retMsg});
+                }else {
+                    if(data) {
+                        //注册成功后
+                        this.setState({submitted: true});
+                        values.jwt = data;
+                    }else {
+                        setErrors({form: retMsg});
+                    }
+                }
         })
             .catch(({response: {data: {retCode, retMsg}}}) => {
                 if (retCode === '200023') {
@@ -177,7 +184,7 @@ class RegisterQPage extends Component {
                 {!submitted ? <Footer>
                     <Button type="submit" disabled={isSubmitting}>{t(`CREAT ACCOUNT`)}</Button>
                 </Footer>: <Footer>
-                    <Button type="button" href={process.env.URL+`?jwt=`+values.jwt}>{t(`COMPLETE`)}</Button>
+                    <Button type="button" href={`?jwt=`+values.jwt}>{t(`COMPLETE`)}</Button>
                 </Footer>
             
                 }
