@@ -50,10 +50,14 @@ class AuthorizePage extends Component {
             })
             .catch(({response: {data: {retCode, retMsg}}}) => {
                 console.log(retCode);
-                if (retCode === '60001') {
+                if (retCode === '201012') {
                     setErrors({password: t(`The password is not correct.`)});
-                } else if (retCode === '500001002') {
+                } else if (retCode === '207002') {
                     setErrors({password: t(`No APP ID ,please call customer services.`)});
+                } else if (retCode === '201001') {
+                    setErrors({password: t(`Sorry, the email is not existed, please register firstly.`)});
+                } else if (retCode === '201013') {
+                    setErrors({password: t(`Duplicated account, please contact the administrator`)});
                 } else{
                     setErrors({form: retMsg});
                 }

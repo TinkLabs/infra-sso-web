@@ -51,6 +51,7 @@ class ForgotPasswordPage extends Component {
         return errors;
     };
 
+
     _onSubmit = (values, {setSubmitting, setErrors}) => {
         const {t} = this.props;
         
@@ -71,8 +72,12 @@ class ForgotPasswordPage extends Component {
                 })
                 .catch(({response: {data: {retCode, retMsg}}}) => {
                     console.log(retCode);
-                    if (retCode === '10000') {
+                    if (retCode === '202004') {
                         setErrors({email: t(`Email is not registered.`)});
+                    } else if (retCode === '203041') {
+                        setErrors({password: t(`Failed to send verification code email when sending verification code.`)});
+                    } else if (retCode === '207002') {
+                        setErrors({password: t(`No APP ID ,please call customer services.`)});
                     } else {
                         setErrors({form: retMsg});
                     }
@@ -94,8 +99,24 @@ class ForgotPasswordPage extends Component {
                     setSubmitting(false);
                 })
                 .catch(({response: {data: {retCode, retMsg}}}) => {
-                    if (retCode === '10000') {
+                    if (retCode === '202009') {
                         setErrors({email: t(`Please enter an valid code.`)});
+                    } else if (retCode === '207002') {
+                        setErrors({password: t(`No APP ID ,please call customer services.`)});
+                    } else if (retCode === '202004') {
+                        setErrors({password: t(`Email is not registered.`)});
+                    } else if (retCode === '202005') {
+                        setErrors({password: t(`oldPassword is invalid, please fill in the correct oldPassword.`)});
+                    } else if (retCode === '202006') {
+                        setErrors({password: t(`Sorry, This newPassword no change, please fill in the newPassword.`)});
+                    } else if (retCode === '202009') {
+                        setErrors({password: t(`Sorry, verification code verified failed.`)});
+                    } else if (retCode === '202012') {
+                        setErrors({password: t(`you has not set security problem，please select other type. `)});
+                    } else if (retCode === '202007') {
+                        setErrors({password: t(`The phone type Temporarily not supported , please correct type. `)});
+                    } else if (retCode === '202008') {
+                        setErrors({password: t(`The type incorrect , please correct type. `)});
                     } else {
                         setErrors({form: retMsg});
                     }

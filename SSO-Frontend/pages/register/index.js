@@ -59,12 +59,24 @@ class RegisterPage extends Component {
             })
             .catch(({response: {data: {retCode, retMsg}}}) => {
                 
-                if (retCode === '60001') {
+                if (retCode === '200023') {
                     setErrors({email: t(`Email has  been used.`)});
-                } else if(retCode==='500001001'){
+                } else if(retCode==='207002'){
                     setErrors({form: t(`No APP ID ,please call customer services`)});
                 } else if(retCode==='200012'){
                     setErrors({password: t(`Password length is at least at 8`)});
+                } else if(retCode==='200001'){
+                    setErrors({password: t(`The Email length is at least 8 when registering`)});
+                } else if(retCode==='200002'){
+                    setErrors({password: t(`Sorry, the email exceeds the length 64 when registering.`)});
+                } else if(retCode==='200013'){
+                    setErrors({password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.`)});
+                } else if(retCode==='200041'){
+                    setErrors({password: t(`Security question list can't be empty when registering.`)});
+                } else if(retCode==='200051'){
+                    setErrors({password: t(`Failed to send the email when registering.`)});
+                } else if(retCode==='200003'){
+                    setErrors({password: t(`The username only can contains the letters, numbers when registering.`)});
                 } else{
                     setErrors({form: retMsg});
                 }
