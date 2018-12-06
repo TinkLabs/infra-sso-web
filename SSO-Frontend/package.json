@@ -1,5 +1,5 @@
 {
-  "name": "oauth-member",
+  "name": "SSO-Frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -60,7 +60,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-json-sort": "^1.0.0",
     "gulp-json-transform": "^0.4.5",
     "gulp-onesky": "^1.1.0",

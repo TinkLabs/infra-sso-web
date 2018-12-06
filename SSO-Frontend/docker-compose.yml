@@ -9,7 +9,7 @@ services:
     ports:
       - "4000:4000"
     command: ["npm", "run", "dev"]
-    container_name: oauth-member
+    container_name: SSO-Frontend
 
 networks:
   default:
