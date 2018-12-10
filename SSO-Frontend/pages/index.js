@@ -7,20 +7,19 @@ import Button from './components/Button';
 import Breakline from './components/Breakline';
 
 
+
+
 class IndexPage extends Component {
     static getInitialProps({query}) {
-        const clientId = query.appid;;
-        const fbLoginUri = `https://sso-uat.handytravel.tech/v1/thirdParty/facebookLogin`
-            //+ `?appid=${process.env.APPID}`
+        const clientId = query.appid;
+
+        const fbLoginUri = process.env.SERVERURI + `/v1/thirdParty/facebookLogin`
             + `?appid=`+clientId
-            //+ `&redirect_uri=${encodeURIComponent(`${process.env.URL}/facebook_login`)}`
-            + `&redirect_uri=http://10.0.2.176:4000/`
+            + `&redirect_uri=${encodeURIComponent(process.env.URL)}`
             ;
-        const googleLoginUri = `https://sso-uat.handytravel.tech/v1/thirdParty/googleLogin`
-        //+ `?appid=${process.env.APPID}`
+        const googleLoginUri = process.env.SERVERURI + `/v1/thirdParty/googleLogin`
         + `?appid=`+clientId
-        //+ `&redirect_uri=${encodeURIComponent(`${process.env.URL}/facebook_login`)}`
-        + `&redirect_uri=http://10.0.2.176:4000/`
+        + `&redirect_uri=${encodeURIComponent(process.env.URL)}`
         ;
 
         return {clientId, fbLoginUri,googleLoginUri};

@@ -19,7 +19,9 @@ class ForgotPasswordPage extends Component {
     };
     static getInitialProps({query}) {
         const clientId = query.appid;
-        return {clientId};
+
+        const request_domain_url = process.env.SERVERURI;
+        return {clientId,request_domain_url};
     }
 
     _validate = (values) => {
@@ -63,7 +65,8 @@ class ForgotPasswordPage extends Component {
         if(this.state.submitted===0) {
             setSubmitting(true);
             
-            axios.post('https://sso-uat.handytravel.tech/v1/service/sendVerificationCode', values)
+
+            axios.post(this.props.request_domain_url + '/v1/service/sendVerificationCode', values)
                 .then(({data: {retCode,retMsg,data}}) => {
                     if(retCode !== "200"){
                         setErrors({form: retMsg});
@@ -94,7 +97,7 @@ class ForgotPasswordPage extends Component {
             values.type='1';
             values.username=values.email;
             values.verificationCode=values.code;
-            axios.post('https://sso-uat.handytravel.tech/v1/user/getUpdatePwdToken', values)
+            axios.post(this.props.request_domain_url+ '/v1/user/getUpdatePwdToken', values)
                 .then(({data: {retCode,retMsg,data}}) => {
                     if(retCode !== "200"){
                         setErrors({code: retMsg});
@@ -137,7 +140,7 @@ class ForgotPasswordPage extends Component {
         if(this.state.submitted===2) {
             setSubmitting(true);
             values.newPassword = values.password;
-            axios.post('https://sso-uat.handytravel.tech/v1/user/resetPwd', values)
+            axios.post(this.props.request_domain_url  + '/v1/user/resetPwd', values)
                 .then(({data: {retCode,retMsg,data}}) => {
                     //return app.render(req, res, '/', req.query);
                     // window.location = '/authorize';
@@ -153,9 +156,7 @@ class ForgotPasswordPage extends Component {
 
                 })
                 .catch(({response: {data: {retCode, retMsg}}}) => {
-                    if (retCode === '60001') {
-                        setErrors({form: t(`Email is not submitted.`)});
-                    } else if (retCode === '207002') {
+                    if (retCode === '207002') {
                         setErrors({form: t(`No APP ID ,please call customer services.`)});
                     } else if (retCode === '202004') {
                         setErrors({form: t(`Email is not registered.`)});

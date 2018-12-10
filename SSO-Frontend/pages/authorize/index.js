@@ -14,8 +14,9 @@ import styles from './styles.less';
 
 class AuthorizePage extends Component {
     static getInitialProps({query}) {
-        const clientId = query.appid;;
-        return {clientId,query};
+        const clientId = query.appid;
+        const request_domain_url = process.env.SERVERURI;
+        return {clientId,query,request_domain_url};
     }
 
     _validate = (values) => {
@@ -37,7 +38,7 @@ class AuthorizePage extends Component {
         const {t} = this.props;
 
         setSubmitting(true);
-        axios.post('https://sso-uat.handytravel.tech/v1/user/login', values)
+        axios.post(this.props.request_domain_url + '/v1/user/login', values)
             .then(({data: {retCode,retMsg,data}}) => {
                 if(retCode !== "200"){
                     setErrors({form: retMsg});

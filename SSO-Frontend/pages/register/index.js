@@ -19,7 +19,8 @@ class RegisterPage extends Component {
     };
     static getInitialProps({query}) {
         const clientId = query.appid;;
-        return {clientId};
+        const request_domain_url = process.env.SERVERURI;
+        return {clientId,request_domain_url};
     }
 
     _validate = (values) => {
@@ -50,7 +51,9 @@ class RegisterPage extends Component {
         const {t} = this.props;
         values.appid= this.props.clientId;
         setSubmitting(true);
-        axios.post(`https://sso-uat.handytravel.tech/v1/user/quickRegister`, values)
+
+
+        axios.post(this.props.request_domain_url + `/v1/user/quickRegister`, values)
             .then(({data: {retCode,retMsg,data}}) => {
                 if(retCode !== "200"){
                     setErrors({form: retMsg});
@@ -85,6 +88,8 @@ class RegisterPage extends Component {
                     setErrors({form: t(`Failed to send the email when registering.`)});
                 } else if(retCode==='200003'){
                     setErrors({email: t(`The username only can contains the letters, numbers when registering.`)});
+                } else if(retCode==='200022'){
+                    setErrors({email: t(`Invalid email when registering.`)});
                 } else{
                     setErrors({form: retMsg});
                 }

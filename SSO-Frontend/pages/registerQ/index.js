@@ -21,16 +21,16 @@ class RegisterQPage extends Component {
 
     static getInitialProps({query}) {
         const clientId = query.appid;
-        const fbLoginUri = `https://sso-uat.handytravel.tech/v1/thirdParty/facebookLogin`
-            + `?appid=`+clientId
-            + `&redirect_uri=${encodeURIComponent(`${process.env.URL}/facebook_login`)}`
-            ;
-        const googleLoginUri = `https://sso-uat.handytravel.tech/v1/thirdParty/googleLogin`
-        + `?appid=`+clientId
-        + `&redirect_uri=${encodeURIComponent(`${process.env.URL}/facebook_login`)}`
+        const fbLoginUri = process.env.SERVERURI + `/v1/thirdParty/facebookLogin`
+            + `?appid=` + clientId
+            + `&redirect_uri=${encodeURIComponent(`${process.env.URL}`)}`
         ;
-
-        return {clientId, fbLoginUri,googleLoginUri};
+        const googleLoginUri = process.env.SERVERURI +`/v1/thirdParty/googleLogin`
+            + `?appid=` + clientId
+            + `&redirect_uri=${encodeURIComponent(`${process.env.URL}`)}`
+        ;
+        const request_domain_url = process.env.SERVERURI;
+        return {clientId, fbLoginUri,googleLoginUri,request_domain_url};
     }
 
     _validate = (values) => {
@@ -61,7 +61,7 @@ class RegisterQPage extends Component {
         const {t} = this.props;
         values.appid= this.props.clientId;
         setSubmitting(true);
-        axios.post(`https://sso-uat.handytravel.tech/v1/user/quickRegister`, values)
+        axios.post(this.props.request_domain_url + `/v1/user/quickRegister`, values)
             .then(({data: {retCode,retMsg,data}}) => {
                 if(retCode !== "200"){
                     setErrors({form: retMsg});
@@ -90,7 +90,9 @@ class RegisterQPage extends Component {
                     setErrors({password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.`)});
                 } else if(retCode==='200051'){
                     setErrors({password: t(`Failed to send the email when registering.`)});
-                }else {
+                } else if(retCode==='200022'){
+                    setErrors({email: t(`Invalid email when registering.`)});
+                } else {
                     setErrors({form: retMsg});
                 }
             })
