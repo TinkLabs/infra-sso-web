@@ -159,6 +159,7 @@ class RegisterQPage extends Component {
                             error={touched.password && errors.password}
                         />
                         <Input
+                            ref={node => { this.password = node }}
                             type="password"
                             name="confirm_password"
                             placeholder="Confirm Password"
