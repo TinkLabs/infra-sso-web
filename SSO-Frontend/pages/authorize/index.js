@@ -13,6 +13,10 @@ import styles from './styles.less';
 
 
 class AuthorizePage extends Component {
+    state = {
+        passwordType: 'password',
+    };
+
     static getInitialProps({query}) {
         const clientId = query.appid;
         const request_domain_url = process.env.SERVERURI;
@@ -69,8 +73,20 @@ class AuthorizePage extends Component {
                 setSubmitting(false);
             });
     };
+
+
+    _onTogglePassword = (target) => {
+        this.setState(prev => {
+            return {
+                [target]: prev[target] === 'text' ? 'password' : 'text'
+            }
+        })
+    };
+
     _render = ({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}) => {
         const {t} = this.props;
+        const { passwordType } = this.state;
+
 
         if (errors.form) {
             return (
@@ -101,14 +117,14 @@ class AuthorizePage extends Component {
                             error={touched.email && errors.email}
                         />
                         <Input
-                            type="password"
+                            type={passwordType}
                             name="password"
                             placeholder="Password"
                             value={values.password}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             append={<img className={styles.icon} src="/static/icons/password.png"/>}
-                            prepend={<img className={styles.icon} src="/static/icons/secret.png"/>}
+                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('passwordType')}  src="/static/icons/secret.png"/>}
                             error={touched.password && errors.password}
                         />
                         <div className={styles.forgotPassword}>

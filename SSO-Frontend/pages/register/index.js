@@ -16,6 +16,7 @@ import styles from './styles.less';
 class RegisterPage extends Component {
     state = {
         passwordType: 'password',
+        confirmPasswordType: 'password',
         submitted: false,
     };
     static getInitialProps({query}) {
@@ -106,10 +107,12 @@ class RegisterPage extends Component {
                 [target]: prev[target] === 'text' ? 'password' : 'text'
             }
         })
-    }
+    };
+
     _render = ({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}) => {
         const {t} = this.props;
         const { passwordType } = this.state;
+        const { confirmPasswordType } = this.state;
 
         if (errors.form) {
             return (
@@ -152,14 +155,14 @@ class RegisterPage extends Component {
                             error={touched.password && errors.password}
                         />
                         <Input
-                            type="password"
+                            type={confirmPasswordType}
                             name="confirm_password"
                             placeholder="Confirm Password"
                             value={values.confirm_password}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             append={<img className={styles.icon} src="/static/icons/password.png"/>}
-                            prepend={<img className={styles.icon} src="/static/icons/secret.png"/>}
+                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('confirmPasswordType')}  src="/static/icons/secret.png"/>}
                             error={touched.confirm_password && errors.confirm_password}
                         />
                         <Checkbox

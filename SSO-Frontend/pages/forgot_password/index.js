@@ -16,6 +16,8 @@ import styles from './styles.less';
 class ForgotPasswordPage extends Component {
     state = {
         submitted: 0,
+        passwordType: 'password',
+        confirmPasswordType: 'password',
     };
     static getInitialProps({query}) {
         const clientId = query.appid;
@@ -177,8 +179,22 @@ class ForgotPasswordPage extends Component {
 
     };
 
+
+    _onTogglePassword = (target) => {
+        this.setState(prev => {
+            return {
+                [target]: prev[target] === 'text' ? 'password' : 'text'
+            }
+        })
+    };
+
+
     _render = ({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}) => {
         const {t} = this.props;
+
+        const { passwordType } = this.state;
+        const { confirmPasswordType } = this.state;
+
 
         if (errors.form) {
             return (
@@ -240,25 +256,25 @@ class ForgotPasswordPage extends Component {
                         />}
 
                         {submitted===2 && <Input
-                            type="password"
+                            type={passwordType}
                             name="password"
                             placeholder="Password"
                             value={values.password}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             append={<img className={styles.icon} src="/static/icons/password.png"/>}
-                            prepend={<img className={styles.icon} src="/static/icons/secret.png"/>}
+                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('passwordType')} src="/static/icons/secret.png"/>}
                             error={touched.password && errors.password}
                         />}
                         {submitted===2 && <Input
-                            type="password"
+                            type={confirmPasswordType}
                             name="confirm_password"
                             placeholder="Confirm Password"
                             value={values.confirm_password}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             append={<img className={styles.icon} src="/static/icons/password.png"/>}
-                            prepend={<img className={styles.icon} src="/static/icons/secret.png"/>}
+                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('confirmPasswordType')} src="/static/icons/secret.png"/>}
                             error={touched.confirm_password && errors.confirm_password}
                         />}
 
