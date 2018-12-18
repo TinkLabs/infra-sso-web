@@ -32,22 +32,22 @@ class ForgotPasswordPage extends Component {
         let errors = {};
 
         if (!isEmail(values.email)) {
-            errors.email = t(`Please enter an valid email.`);
+            errors.email = t(`Please enter an valid email`);
         }
        
         if(this.state.submitted>=1) {
             if (values.code.length===4) {}else{
-                errors.code = t(`Please enter an valid code.`);
+                errors.code = t(`Please enter an valid code`);
             }
         }
         if(this.state.submitted>=2) {
         
             if (isEmpty(values.password)) {
-                errors.password = t(`Please enter the password.`);
+                errors.password = t(`Please enter the password`);
             }
       
             if (!isEmpty(values.password) && values.password !== values.confirm_password) {
-                errors.confirm_password = t(`Password do not match.`);
+                errors.confirm_password = t(`Password do not match`);
             }
         }       
 
@@ -80,11 +80,13 @@ class ForgotPasswordPage extends Component {
                 .catch(({response: {data: {retCode, retMsg}}}) => {
                     console.log(retCode);
                     if (retCode === '202004') {
-                        setErrors({email: t(`Email is not registered.`)});
+                        setErrors({email: t(`Email is not registered`)});
                     } else if (retCode === '203041') {
-                        setErrors({password: t(`Failed to send verification code email when sending verification code.`)});
+                        setErrors({password: t(`Failed to send verification code email when sending verification code`)});
                     } else if (retCode === '207002') {
-                        setErrors({form: t(`No APP ID ,please call customer services.`)});
+                        setErrors({form: t(`No APP ID ,please call customer services`)});
+                    } else if (retCode === '203012') {
+                        setErrors({email: t(`The email is not existed when sending verification code, please register firstly`)});
                     } else {
                         setErrors({form: retMsg});
                     }
@@ -99,7 +101,7 @@ class ForgotPasswordPage extends Component {
             values.type='1';
             values.username=values.email;
             values.verificationCode=values.code;
-            axios.post(this.props.request_domain_url+ '/v1/user/getUpdatePwdToken', values)
+            axios.post(this.props.request_domain_url+ '/v1/user/updatePwdToken', values)
                 .then(({data: {retCode,retMsg,data}}) => {
                     if(retCode !== "200"){
                         setErrors({code: retMsg});
@@ -113,23 +115,23 @@ class ForgotPasswordPage extends Component {
                 })
                 .catch(({response: {data: {retCode, retMsg}}}) => {
                     if (retCode === '202009') {
-                        setErrors({code: t(`Please enter an valid code.`)});
+                        setErrors({code: t(`Please enter an valid code`)});
                     } else if (retCode === '207002') {
-                        setErrors({form: t(`No APP ID ,please call customer services.`)});
+                        setErrors({form: t(`No APP ID ,please call customer services`)});
                     } else if (retCode === '202004') {
                         setErrors({code: t(`Email is not registered.`)});
                     } else if (retCode === '202005') {
-                        setErrors({code: t(`oldPassword is invalid, please fill in the correct oldPassword.`)});
+                        setErrors({code: t(`oldPassword is invalid, please fill in the correct oldPassword`)});
                     } else if (retCode === '202006') {
-                        setErrors({code: t(`Sorry, This newPassword no change, please fill in the newPassword.`)});
+                        setErrors({code: t(`Sorry, This newPassword no change, please fill in the newPassword`)});
                     } else if (retCode === '202009') {
-                        setErrors({code: t(`Sorry, verification code verified failed.`)});
+                        setErrors({code: t(`Sorry, verification code verified failed`)});
                     } else if (retCode === '202012') {
-                        setErrors({code: t(`you has not set security problem，please select other type. `)});
+                        setErrors({code: t(`you has not set security problem，please select other type`)});
                     } else if (retCode === '202007') {
-                        setErrors({code: t(`The phone type Temporarily not supported , please correct type. `)});
+                        setErrors({code: t(`The phone type Temporarily not supported , please correct type`)});
                     } else if (retCode === '202008') {
-                        setErrors({code: t(`The type incorrect , please correct type. `)});
+                        setErrors({code: t(`The type incorrect , please correct type`)});
                     } else {
                         setErrors({form: retMsg});
                     }
@@ -159,15 +161,15 @@ class ForgotPasswordPage extends Component {
                 })
                 .catch(({response: {data: {retCode, retMsg}}}) => {
                     if (retCode === '207002') {
-                        setErrors({form: t(`No APP ID ,please call customer services.`)});
+                        setErrors({form: t(`No APP ID ,please call customer services`)});
                     } else if (retCode === '202004') {
-                        setErrors({form: t(`Email is not registered.`)});
+                        setErrors({form: t(`Email is not registered`)});
                     } else if(retCode==='200012'){
                         setErrors({password: t(`Password length is at least at 8`)});
                         setErrors({confirm_password: t(`Password length is at least at 8`)});
                     } else if(retCode==='200013'){
-                        setErrors({password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.`)});
-                        setErrors({confirm_password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.`)});
+                        setErrors({password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering`)});
+                        setErrors({confirm_password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering`)});
                     } else {
                         setErrors({form: retMsg});
                     }
@@ -218,15 +220,15 @@ class ForgotPasswordPage extends Component {
                     </div>
                     }
                     {submitted===1 && <div className={styles.remark}>
-                        {t(`Please input the reset password Code which received:`)}
+                        {t(`Please input the reset password Code which received`)}
                     </div>
                     }
                     {submitted===2 && <div className={styles.remark}>
-                        {t(`After reset your password ,you will be redirect to Login page and login again.`)}
+                        {t(`After reset your password ,you will be redirect to Login page and login again`)}
                     </div>
                     }
                     {submitted===3 && <div className={styles.remark}>
-                        {t(`Your password for handy member has been successfully rest. You are now logged in — you can continue using handy, or visit My Account to edit your personal profile.`)}
+                        {t(`Your password for handy member has been successfully rest. You are now logged in — you can continue using handy, or visit My Account to edit your personal profile`)}
                     </div>
                     }
 
@@ -234,7 +236,7 @@ class ForgotPasswordPage extends Component {
                         {submitted===0 && <Input
                             type="text"
                             name="email"
-                            placeholder="Email"
+                            placeholder={t(`email address`)}
                             value={values.email}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -247,7 +249,7 @@ class ForgotPasswordPage extends Component {
                         {submitted===1 && <Input
                             type="text"
                             name="code"
-                            placeholder="Verification Code"
+                            placeholder={t(`Verification Code`)}
                             value={values.code}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -258,7 +260,7 @@ class ForgotPasswordPage extends Component {
                         {submitted===2 && <Input
                             type={passwordType}
                             name="password"
-                            placeholder="Password"
+                            placeholder={t(`Password`)}
                             value={values.password}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -269,7 +271,7 @@ class ForgotPasswordPage extends Component {
                         {submitted===2 && <Input
                             type={confirmPasswordType}
                             name="confirm_password"
-                            placeholder="Confirm Password"
+                            placeholder={t(`Confirm Password`)}
                             value={values.confirm_password}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -290,7 +292,7 @@ class ForgotPasswordPage extends Component {
                     {/*<br/><br/><br/><br/>*/}
                 {/*</Content>}*/}
                 {submitted===0 && <Footer>
-                    <Button type="submit" disabled={isSubmitting}>{t(`SEND ME THE LINK`)}</Button>
+                    <Button type="submit" disabled={isSubmitting}>{t(`SEND ME THE CODE`)}</Button>
                 </Footer>}
                 {submitted===1 && <Footer>
                     <Button type="submit" disabled={isSubmitting}>{t(`VERIFY ME THE CODE`)}</Button>

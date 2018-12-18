@@ -48,7 +48,7 @@ class IndexPage extends Component {
                         <Button className={styles.google} href={this.props.googleLoginUri}>
                             {t(`Sign in with Google+`)}
                         </Button>
-                        <Breakline>or</Breakline>
+                        <Breakline>{t(`or`)}</Breakline>
                         <Button className={styles.email} href={`/register?appid=`+this.props.clientId}>
                             {t(`Register using Email`)}
                         </Button>
@@ -56,8 +56,8 @@ class IndexPage extends Component {
                 </Content>
                 <Footer>
                     <div className={styles.signIn}>
-                        Already have an account?
-                        <a href={`/authorize?appid=`+this.props.clientId}>SIGN IN</a>
+                        {t(`Already have an account?`)}
+                        <a href={`/authorize?appid=`+this.props.clientId}>{t(`SIGN IN`)}</a>
                     </div>
                 </Footer>
             </Container>

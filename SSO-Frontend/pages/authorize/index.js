@@ -29,11 +29,11 @@ class AuthorizePage extends Component {
         let errors = {};
 
         if (!isEmail(values.email)) {
-            errors.email = t(`Please enter an valid email.`);
+            errors.email = t(`Please enter an valid email`);
         }
 
         if (isEmpty(values.password)) {
-            errors.password = t(`Please enter the password.`);
+            errors.password = t(`Please enter the password`);
         }
 
         return errors;
@@ -58,11 +58,11 @@ class AuthorizePage extends Component {
             .catch(({response: {data: {retCode, retMsg}}}) => {
                 console.log(retCode);
                 if (retCode === '201012') {
-                    setErrors({password: t(`The password is not correct.`)});
+                    setErrors({password: t(`The password is not correct`)});
                 } else if (retCode === '207002') {
-                    setErrors({form: t(`No APP ID ,please call customer services.`)});
+                    setErrors({form: t(`No APP ID ,please call customer services`)});
                 } else if (retCode === '201001') {
-                    setErrors({email: t(`Sorry, the email is not existed, please register firstly.`)});
+                    setErrors({email: t(`Sorry, the email is not existed, please register firstly`)});
                 } else if (retCode === '201013') {
                     setErrors({email: t(`Duplicated account, please contact the administrator`)});
                 } else{
@@ -109,7 +109,7 @@ class AuthorizePage extends Component {
                         <Input
                             type="text"
                             name="email"
-                            placeholder="Email"
+                            placeholder={t(`email address`)}
                             value={values.email}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -119,7 +119,7 @@ class AuthorizePage extends Component {
                         <Input
                             type={passwordType}
                             name="password"
-                            placeholder="Password"
+                            placeholder={t(`Password`)}
                             value={values.password}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -133,7 +133,7 @@ class AuthorizePage extends Component {
                     </div>
                 </Content>
                 <Footer>
-                    <Button type="submit" disabled={isSubmitting}>{t(`SIGN IN`)}</Button>
+                    <Button type="submit" disabled={isSubmitting}> {t(`SIGN IN`)} </Button>
                 </Footer>
             </Container>
         );
