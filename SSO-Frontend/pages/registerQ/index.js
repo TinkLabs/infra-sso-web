@@ -185,7 +185,7 @@ class RegisterQPage extends Component {
                     {t(`You can continue on what you were doing, or visit My Account page to customise your profile.`)}
                 </Content>}
                 {!submitted ? <Footer>
-                    <Button type="submit" disabled={isSubmitting}>{t(`CREAT ACCOUNT`)}</Button>
+                    <Button type="submit" disabled={isSubmitting}>{t(`CREATE ACCOUNT`)}</Button>
                 </Footer>: <Footer>
                     <Button type="button" href={`?jwt=`+values.jwt}>{t(`COMPLETE`)}</Button>
                 </Footer>
