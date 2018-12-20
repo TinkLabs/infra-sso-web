@@ -16,7 +16,9 @@ import styles from './styles.less';
 class RegisterPage extends Component {
     state = {
         passwordType: 'password',
+        passwordIconType: '/static/icons/secret.png',
         confirmPasswordType: 'password',
+        confirmPasswordIconType: '/static/icons/secret.png',
         submitted: false,
     };
     static getInitialProps({query}) {
@@ -101,10 +103,12 @@ class RegisterPage extends Component {
             });
     };
 
-    _onTogglePassword = (target) => {
+    _onTogglePassword = (target,icon) => {
         this.setState(prev => {
             return {
-                [target]: prev[target] === 'text' ? 'password' : 'text'
+                [target]: prev[target] === 'text' ? 'password' : 'text',
+
+                [icon]: prev[icon] === '/static/icons/secret.png' ? '/static/icons/nosecret.png' : '/static/icons/secret.png'
             }
         })
     };
@@ -112,7 +116,9 @@ class RegisterPage extends Component {
     _render = ({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}) => {
         const {t} = this.props;
         const { passwordType } = this.state;
+        const { passwordIconType  } = this.state;
         const { confirmPasswordType } = this.state;
+        const { confirmPasswordIconType  } = this.state;
 
         if (errors.form) {
             return (
@@ -151,7 +157,7 @@ class RegisterPage extends Component {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             append={<img className={styles.icon} src="/static/icons/password.png"/>}
-                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('passwordType')} src="/static/icons/secret.png"/>}
+                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('passwordType','passwordIconType')} src={passwordIconType}/>}
                             error={touched.password && errors.password}
                         />
                         <Input
@@ -162,7 +168,7 @@ class RegisterPage extends Component {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             append={<img className={styles.icon} src="/static/icons/password.png"/>}
-                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('confirmPasswordType')}  src="/static/icons/secret.png"/>}
+                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('confirmPasswordType','confirmPasswordIconType')}  src={confirmPasswordIconType}/>}
                             error={touched.confirm_password && errors.confirm_password}
                         />
                         <Checkbox

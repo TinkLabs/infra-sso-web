@@ -15,6 +15,7 @@ import styles from './styles.less';
 class AuthorizePage extends Component {
     state = {
         passwordType: 'password',
+        passwordIconType: '/static/icons/secret.png',
     };
 
     static getInitialProps({query}) {
@@ -75,10 +76,13 @@ class AuthorizePage extends Component {
     };
 
 
-    _onTogglePassword = (target) => {
+    _onTogglePassword = (target,icon) => {
         this.setState(prev => {
             return {
-                [target]: prev[target] === 'text' ? 'password' : 'text'
+                [target]: prev[target] === 'text' ? 'password' : 'text',
+
+                [icon]: prev[icon] === '/static/icons/secret.png' ? '/static/icons/nosecret.png' : '/static/icons/secret.png'
+
             }
         })
     };
@@ -86,6 +90,7 @@ class AuthorizePage extends Component {
     _render = ({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting}) => {
         const {t} = this.props;
         const { passwordType } = this.state;
+        const { passwordIconType } = this.state;
 
 
         if (errors.form) {
@@ -124,7 +129,7 @@ class AuthorizePage extends Component {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             append={<img className={styles.icon} src="/static/icons/password.png"/>}
-                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('passwordType')}  src="/static/icons/secret.png"/>}
+                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('passwordType','passwordIconType')}  src={passwordIconType}/>}
                             error={touched.password && errors.password}
                         />
                         <div className={styles.forgotPassword}>

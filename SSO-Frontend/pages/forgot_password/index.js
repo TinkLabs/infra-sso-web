@@ -17,7 +17,9 @@ class ForgotPasswordPage extends Component {
     state = {
         submitted: 0,
         passwordType: 'password',
+        passwordIconType: '/static/icons/secret.png',
         confirmPasswordType: 'password',
+        confirmPasswordIconType: '/static/icons/secret.png',
     };
     static getInitialProps({query}) {
         const clientId = query.appid;
@@ -182,10 +184,11 @@ class ForgotPasswordPage extends Component {
     };
 
 
-    _onTogglePassword = (target) => {
+    _onTogglePassword = (target,icon) => {
         this.setState(prev => {
             return {
-                [target]: prev[target] === 'text' ? 'password' : 'text'
+                [target]: prev[target] === 'text' ? 'password' : 'text',
+                [icon]: prev[icon] === '/static/icons/secret.png' ? '/static/icons/nosecret.png' : '/static/icons/secret.png'
             }
         })
     };
@@ -195,7 +198,9 @@ class ForgotPasswordPage extends Component {
         const {t} = this.props;
 
         const { passwordType } = this.state;
+        const { passwordIconType  } = this.state;
         const { confirmPasswordType } = this.state;
+        const { confirmPasswordIconType  } = this.state;
 
 
         if (errors.form) {
@@ -265,7 +270,7 @@ class ForgotPasswordPage extends Component {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             append={<img className={styles.icon} src="/static/icons/password.png"/>}
-                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('passwordType')} src="/static/icons/secret.png"/>}
+                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('passwordType','passwordIconType')} src={passwordIconType}/>}
                             error={touched.password && errors.password}
                         />}
                         {submitted===2 && <Input
@@ -276,7 +281,7 @@ class ForgotPasswordPage extends Component {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             append={<img className={styles.icon} src="/static/icons/password.png"/>}
-                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('confirmPasswordType')} src="/static/icons/secret.png"/>}
+                            prepend={<img className={styles.icon} onClick={() => this._onTogglePassword('confirmPasswordType','confirmPasswordIconType')} src={confirmPasswordIconType}/>}
                             error={touched.confirm_password && errors.confirm_password}
                         />}
 
