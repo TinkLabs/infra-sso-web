@@ -1,5 +1,5 @@
 {
-	"An e-mail with the reset password link has been sent to:": "与重置密码验证码的电子邮件已经发送到:",
+	"An e-mail with the reset password link has been sent to:": "重置密码验证码的电子邮件已经发送:",
 	"Become handy member": "加入 <1>handy</1> 会员",
 	"Join us": "加入 <1>handy</1> 我们",
 	"to enjoy exclusive services and offers": "享受专属服务和优惠",
@@ -11,7 +11,7 @@
 	"Password length is at least at 8":"密码长度至少为8位",
 	"Password is too simple, it MUST contain the uppercase and lowercase letters, numbers when registering":"密码强度不够，请至少同时包括大写字母，小写字母以及数字",
 	"Email has already been submitted": "该邮箱已注册",
-	"Email is not submitted": "该邮箱尚未注册",
+	"Email is not submitted": "该邮箱尚未提交",
 	"Email is not registered":"该邮箱尚未注册",
 	"Email:": "邮箱:",
 	"or": "或者",
