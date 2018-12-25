@@ -24,4 +24,8 @@ module.exports = {
     interpolation: {
         escapeValue: false, // not needed for react!!
     },
+    /*全局解决加载的时候显示原英文的问题*/
+    react: {
+        wait: true,
+    },
 };

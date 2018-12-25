@@ -163,5 +163,7 @@ class AuthorizePage extends Component {
     }
 }
 
-
+`translate.setDefaults({
+   wait: true,
+ });`
 export default translate()(AuthorizePage);
