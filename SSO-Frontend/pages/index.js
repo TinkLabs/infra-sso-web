@@ -16,6 +16,11 @@ class IndexPage extends Component {
         const ssoError = query.ssoError;
         const jwt = query.jwt;
 
+        //解决ios 中webview 后退时导致环境变量失效
+        if(! process.env.SERVERURI || ! process.env.URL){
+            location.reload();
+        }
+
         const fbLoginUri = process.env.SERVERURI + `/v1/thirdParty/facebookLogin`
             + `?appid=`+clientId
             + `&redirect_uri=${encodeURIComponent(process.env.URL)}`
