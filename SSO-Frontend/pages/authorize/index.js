@@ -102,8 +102,10 @@ class AuthorizePage extends Component {
         return (
             <Container component="form" onSubmit={handleSubmit}>
                 <Header>
-                    <Trans i18nKey="Sign in handy member">
-                        Sign in <b>handy</b> member
+                    <Trans i18nKey="hi member sign in">
+                        <div className={styles.header}>
+                            <i>hi</i> member sign in
+                        </div>
                     </Trans>
                 </Header>
                 <Content>

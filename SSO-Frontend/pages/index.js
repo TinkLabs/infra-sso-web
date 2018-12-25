@@ -34,11 +34,11 @@ class IndexPage extends Component {
                         <img src="/static/logo.png"/>
                     </div>
                     <div className={styles.slogan}>
-                        <Trans i18nKey="Join us">
-                            Join <b></b> us
+                        <Trans i18nKey="Become a hi member">
+                            Become a <i>hi</i> member
                         </Trans>
                         <div className={styles.caption}>
-                            {t(`to enjoy exclusive services and offers`)}
+                            {t(`and enjoy our premium features`)}
                         </div>
                     </div>
                     <div className={styles.buttons}>

@@ -131,7 +131,10 @@ class RegisterPage extends Component {
         return (
             <Container component="form" onSubmit={handleSubmit}>
                 <Header>
-                    {!submitted && <Trans i18nKey="Register handy member">Register <b>handy</b> member</Trans>}
+                    {!submitted && <Trans i18nKey="Register for hi membership">
+                        <div className={styles.header}>Register for <i>hi</i> membership
+                        </div>
+                    </Trans>}
                     {submitted && <Trans i18nKey="Thank you for joining handy member!">Thank you for joining <b>handy</b> member!</Trans>}
                 </Header>
                 {!submitted && <Content>
