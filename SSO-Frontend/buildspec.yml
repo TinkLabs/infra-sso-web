@@ -23,4 +23,4 @@ phases:
         - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files:
-        - imagedefinitions.json
+        - SSO-Frontend/imagedefinitions.json
