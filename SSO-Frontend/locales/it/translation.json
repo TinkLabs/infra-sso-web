@@ -105,5 +105,9 @@
   "Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.": "Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.",
   "Failed to send the email when registering.": "Failed to send the email when registering.",
   "Invalid email when registering.": "Invalid email when registering.",
-  "Sign in with social media:": "Sign in with social media:"
+  "Sign in with social media:": "Sign in with social media:",
+  "By signing up, I agree to handy’s": "By signing up, I agree to handy’s",
+  "Terms & Conditions": "Terms & Conditions",
+  "and": "and",
+  "Privacy Policy": "Privacy Policy"
 }
