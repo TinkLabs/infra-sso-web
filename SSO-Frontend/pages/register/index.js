@@ -158,8 +158,8 @@ class RegisterPage extends Component {
             </Trans>
           )}
           {submitted && (
-            <Trans i18nKey="Thank you for joining handy member!">
-              Thank you for joining <b>handy</b> member!
+            <Trans i18nKey="Thank you for joining hi member!">
+              Thank you for joining <b>hi </b> member!
             </Trans>
           )}
         </Header>
@@ -240,7 +240,7 @@ class RegisterPage extends Component {
                   error={touched.accept_tnc && errors.accept_tnc}
                 />
                 <div>
-                  {t(`By signing up, I agree to handy’s`)}{' '}
+                  {t(`By signing up, I agree to hi’s`)}{' '}
                   <a
                     style={{
                       color: '#cba052',
