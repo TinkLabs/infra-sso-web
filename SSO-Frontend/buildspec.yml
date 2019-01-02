@@ -5,22 +5,25 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+      - export TAG_TIMESTAMP=`date +%s`
+      - export REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/$IMAGE_REPO_NAME
   build:
     commands:
       - echo Build started on `date`
       - echo Download config file
-      - aws s3 cp s3://handy-deploy-data/$ENV/SSO-Frontend SSO-Frontend
-      - aws s3 cp s3://handy-deploy-data/$ENV/SSO-Frontend.pub SSO-Frontend.pub
       - echo Building the Docker image...
-      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - cd SSO-Frontend
+      - docker build -t $IMAGE_REPO_NAME:${ENV}-latest .
+      - docker tag $IMAGE_REPO_NAME:${ENV}-latest ${REPOSITORY_URI}:${ENV}-latest
+      - docker tag $IMAGE_REPO_NAME:${ENV}-latest ${REPOSITORY_URI}:${TAG_TIMESTAMP}
   post_build:
     commands:
         - echo Build completed on `date`
         - echo Pushing the Docker image...
-        - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+        - docker push ${REPOSITORY_URI}:${ENV}-latest
+        - docker push ${REPOSITORY_URI}:${TAG_TIMESTAMP}
         - echo Writing image definitions file...
-        - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+        - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME ${REPOSITORY_URI}:${TAG_TIMESTAMP} > imagedefinitions.json
 artifacts:
     files:
         - SSO-Frontend/imagedefinitions.json
