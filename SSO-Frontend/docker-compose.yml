@@ -1,17 +1,17 @@
 version: '3'
 services:
   node-app:
-    image: "node:8"
+    image: "node:10"
     volumes:
       - ./:/app
     env_file: .env
     working_dir: /app
     ports:
       - "4000:4000"
-    command: ["npm", "run", "dev"]
+    command: ["npm", "run", "start:server"]
     container_name: SSO-Frontend
 
-networks:
-  default:
-    external:
-      name: backend2_default
+# networks:
+#   default:
+#     external:
+#       name: backend2_default
