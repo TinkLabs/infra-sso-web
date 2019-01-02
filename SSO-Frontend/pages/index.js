@@ -30,7 +30,12 @@ class IndexPage extends Component {
         + `&redirect_uri=${encodeURIComponent(process.env.URL)}`
         ;
 
-        return {clientId, fbLoginUri,googleLoginUri,ssoError,jwt};
+        // const wechatLoginUri = `https://open.weixin.qq.com/connect/qrconnect?appid=wx18e427845d4547fb&redirect_uri=http%3A%2F%2Fhi.com%3Bhandy.travel&response_type=code&scope=snsapi_login&state=a4bf4769cb4a7564e531d8a9f7cd0bc0#wechat_redirect`
+        const wechatLoginUri = process.env.SERVERURI + `/v1/thirdParty/wechatLogin`
+            + `?appid=`+clientId
+            + `&redirect_uri=${encodeURIComponent(process.env.URL)}`;
+
+        return {clientId, fbLoginUri,googleLoginUri,ssoError,jwt,wechatLoginUri};
     }
 
 
@@ -68,6 +73,9 @@ class IndexPage extends Component {
                                 <Button className={styles.google} href={this.props.googleLoginUri}>
                                     {t(`Sign in with Google+`)}
                                 </Button>
+                                {/*<Button className={styles.wechat} href={this.props.wechatLoginUri}>*/}
+                                    {/*{t(`Sign in with Wechat`)}*/}
+                                {/*</Button>*/}
                                 <Breakline>{t(`or`)}</Breakline>
                                 <Button className={styles.email} href={`/register?appid=`+this.props.clientId}>
                                     {t(`Register using Email`)}
@@ -139,6 +147,9 @@ class IndexPage extends Component {
                         <Button className={styles.google} href={this.props.googleLoginUri}>
                             {t(`Sign in with Google+`)}
                         </Button>
+                        {/*<Button className={styles.wechat} href={this.props.wechatLoginUri}>*/}
+                            {/*{t(`Sign in with Wechat`)}*/}
+                        {/*</Button>*/}
                         <Breakline>{t(`or`)}</Breakline>
                         <Button className={styles.email} href={`/register?appid=`+this.props.clientId}>
                             {t(`Register using Email`)}
