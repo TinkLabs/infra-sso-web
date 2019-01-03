@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon app.js --presets env --plugins transform-object-rest-spread",
     "start": "npm run start:next && npm run start:server",
-    "start:server": "next start -p $PORT",
+    "start:server": "babel-node app.js --presets env --plugins transform-object-rest-spread",
     "start:next": "next build",
     "i18n:scan": "i18next-scanner 'pages/**/*.js'"
   },
