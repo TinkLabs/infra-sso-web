@@ -247,14 +247,14 @@ class RegisterPage extends Component {
                       textDecoration: 'none',
                       display: 'contents'
                     }}
-                    href="https://www.handy.travel/handy-device-terms-and-policy"
+                    href="https://www.hiinc.com/terms-and-privacy-policy"
                   >
                     {t(`Terms & Conditions`)}
                   </a>{' '}
                   {t(`and`)}{' '}
                   <a
                     style={{ color: '#cba052', textDecoration: 'none' }}
-                    href="https://www.handy.travel/handy-device-terms-and-policy"
+                    href="https://www.hiinc.com/terms-and-privacy-policy"
                   >
                     {t(`Privacy Policy`)}
                   </a>
