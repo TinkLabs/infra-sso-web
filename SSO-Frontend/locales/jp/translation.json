@@ -80,5 +80,11 @@
   "By signing up, I agree to hi’s": "サインアップする, 同意します hi’s",
   "Terms & Conditions": "利用規約",
   "and": "そして",
-  "Privacy Policy": "プライバシーポリシー"
+  "Privacy Policy": "プライバシーポリシー",
+  "first name": "ファーストネーム",
+  "last name": "苗字",
+  "Please enter the first name": "名を入力してください",
+  "Please enter the last name": "姓を入力してください",
+  "Please choose a country": "国を選択してください",
+  "no country data": "国データなし"
 }

@@ -110,5 +110,11 @@
   "By signing up, I agree to hi’s": "By signing up, I agree to hi’s",
   "Terms & Conditions": "Terms & Conditions",
   "and": "and",
-  "Privacy Policy": "Privacy Policy"
+  "Privacy Policy": "Privacy Policy",
+  "first name": "First Name",
+  "last name": "Last Name",
+  "Please enter the first name": "Please enter the first name",
+  "Please enter the last name": "Please enter the last name",
+  "Please choose a country": "Please choose a country",
+  "no country data": "no country data"
 }

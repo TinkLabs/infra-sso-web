@@ -9,8 +9,22 @@ import Alert from '../components/Alert'
 import Input from '../components/Input'
 import Button from '../components/Button'
 import Checkbox from '../components/Checkbox'
+import CountrySelect from '../components/Select'
 import '../global.less'
 import styles from './styles.less'
+
+import country from './country.json'
+
+const countryCode = Object.keys(country)
+const countryList = []
+countryCode.forEach(item => {
+  countryList.push({
+    value: item,
+    label: country[item]
+  })
+})
+
+const PAGE_FOR770 = '112233'
 
 class RegisterPage extends Component {
   state = {
@@ -20,6 +34,7 @@ class RegisterPage extends Component {
     confirmPasswordIconType: '/static/icons/secret.png',
     submitted: false
   }
+
   static getInitialProps({ query }) {
     const clientId = query.appid
     const request_domain_url = process.env.SERVERURI
@@ -30,6 +45,20 @@ class RegisterPage extends Component {
     const { t } = this.props
 
     let errors = {}
+
+    if (this.props.clientId === PAGE_FOR770) {
+      if (isEmpty(values.firstName)) {
+        errors.firstName = t('Please enter the first name')
+      }
+
+      if (isEmpty(values.lastName)) {
+        errors.lastName = t('Please enter the last name')
+      }
+
+      if (isEmpty(values.country)) {
+        errors.country = t(`Please choose a country`)
+      }
+    }
 
     if (!isEmail(values.email)) {
       errors.email = t(`Please enter an valid email`)
@@ -58,7 +87,33 @@ class RegisterPage extends Component {
     values.appid = this.props.clientId
     setSubmitting(true)
 
-    axios
+    if (this.props.clientId === PAGE_FOR770) {
+      let cityCode
+      countryList.forEach(item => {
+        if (item.label === values.country) {
+          cityCode = item.value
+        }
+      })
+
+      values.profile = {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        country: cityCode
+      }
+      delete values.firstName
+      delete values.lastName
+      delete values.country
+    }
+
+    const axiosInstance = axios.create()
+    const handyId = localStorage.getItem('HANDY_ID')
+    if (handyId) {
+      axiosInstance.defaults.headers = {
+        'Devcie-User-Id': localStorage.getItem('HANDY_ID')
+      }
+    }
+
+    axiosInstance
       .post(this.props.request_domain_url + `/v1/user/quickRegister`, values)
       .then(({ data: { retCode, retMsg, data } }) => {
         if (retCode !== '200') {
@@ -132,6 +187,7 @@ class RegisterPage extends Component {
     touched,
     handleChange,
     handleBlur,
+    setFieldValue,
     handleSubmit,
     isSubmitting
   }) => {
@@ -169,6 +225,36 @@ class RegisterPage extends Component {
               {t(`Please enter your email address and set your password:`)}
             </div>
             <div className={styles.form}>
+              {this.props.clientId === PAGE_FOR770 ? (
+                <Input
+                  type="text"
+                  name="firstName"
+                  placeholder={t(`first name`)}
+                  value={values.firstName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  append={
+                    <img className={styles.icon} src="/static/icons/user.png" />
+                  }
+                  autoComplete="off"
+                  error={touched.firstName && errors.firstName}
+                />
+              ) : null}
+              {this.props.clientId === PAGE_FOR770 ? (
+                <Input
+                  type="text"
+                  name="lastName"
+                  placeholder={t(`last name`)}
+                  value={values.lastName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  autoComplete="off"
+                  append={
+                    <img className={styles.icon} src="/static/icons/user.png" />
+                  }
+                  error={touched.lastName && errors.lastName}
+                />
+              ) : null}
               <Input
                 type="text"
                 name="email"
@@ -176,6 +262,7 @@ class RegisterPage extends Component {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                autoComplete="off"
                 append={
                   <img className={styles.icon} src="/static/icons/email.png" />
                 }
@@ -188,6 +275,7 @@ class RegisterPage extends Component {
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                autoComplete="off"
                 append={
                   <img
                     className={styles.icon}
@@ -212,6 +300,7 @@ class RegisterPage extends Component {
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                autoComplete="off"
                 append={
                   <img
                     className={styles.icon}
@@ -232,14 +321,39 @@ class RegisterPage extends Component {
                 }
                 error={touched.confirm_password && errors.confirm_password}
               />
-              <div style={{ display: 'flex' }}>
+              {this.props.clientId === PAGE_FOR770 ? (
+                <div style={{ marginBottom: '32px' }}>
+                  <CountrySelect
+                    value={values.country}
+                    countryList={countryList}
+                    placeholder={t(`country of origin`)}
+                    notFound={t(`no country data`)}
+                    onChange={setFieldValue}
+                    onBlur={handleBlur}
+                    append={
+                      <img
+                        className={styles.icon}
+                        src="/static/icons/globe.png"
+                      />
+                    }
+                    prepend={
+                      <img
+                        className={styles.icon}
+                        src="/static/icons/noun_dropdown.png"
+                      />
+                    }
+                    error={touched.country && errors.country}
+                  />
+                </div>
+              ) : null}
+              <div style={{ position: 'relative' }}>
                 <Checkbox
                   name="accept_tnc"
                   onChange={handleChange}
                   checked={values.accept_tnc}
                   error={touched.accept_tnc && errors.accept_tnc}
                 />
-                <div>
+                <div className={styles.privacyTips}>
                   {t(`By signing up, I agree to hi’s`)}{' '}
                   <a
                     style={{
@@ -294,9 +408,12 @@ class RegisterPage extends Component {
       <Formik
         initialValues={{
           appid: '',
+          firstName: '',
+          lastName: '',
           email: '',
           password: '',
           confirm_password: '',
+          country: '',
           accept_tnc: false,
           jwt: ''
         }}

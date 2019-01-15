@@ -80,5 +80,11 @@
   "By signing up, I agree to hi’s": "點擊註冊，即表示你同意接受",
   "Terms & Conditions": "條款和條件",
   "and": "和",
-  "Privacy Policy": "隱私政策"
+  "Privacy Policy": "隱私政策",
+  "first name": "名字",
+  "last name": "姓",
+  "Please enter the first name": "請輸入名字",
+  "Please enter the last name": "請輸入姓",
+  "Please choose a country": "請選擇一個國家",
+  "no country data": "未找到國家"
 }
