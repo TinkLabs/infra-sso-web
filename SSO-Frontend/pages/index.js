@@ -12,6 +12,7 @@ class IndexPage extends Component {
     const clientId = query.appid
     const ssoError = query.ssoError
     const jwt = query.jwt
+    const handyId = query.devinceId
 
     //解决ios 中webview 后退时导致环境变量失效
     if (!process.env.SERVERURI || !process.env.URL) {
@@ -44,24 +45,26 @@ class IndexPage extends Component {
       googleLoginUri,
       ssoError,
       jwt,
-      wechatLoginUri
+      wechatLoginUri,
+      handyId
     }
   }
 
   componentDidMount() {
-    if (window.WebViewClient) {
-      const { imei } = window.WebViewClient.getDeviceInfo()
-      localStorage.setItem('HANDY_ID', imei)
-    } else {
-      document.addEventListener(
-        'WebViewClient',
-        function() {
-          const { imei } = window.WebViewClient.getDeviceInfo()
-          localStorage.setItem('HANDY_ID', imei)
-        },
-        false
-      )
-    }
+    // if (window.WebViewClient) {
+    //   const { imei } = window.WebViewClient.getDeviceInfo()
+    //   localStorage.setItem('HANDY_ID', imei)
+    // } else {
+    //   document.addEventListener(
+    //     'WebViewClient',
+    //     function() {
+    //       const { imei } = window.WebViewClient.getDeviceInfo()
+    //       localStorage.setItem('HANDY_ID', imei)
+    //     },
+    //     false
+    //   )
+    // }
+    localStorage.setItem('HANDY_ID', this.props.handyId)
   }
 
   render() {
