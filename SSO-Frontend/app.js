@@ -1,6 +1,7 @@
 import path from 'path'
 import next from 'next'
 import express from 'express'
+import favicon from 'serve-favicon'
 import bodyParser from 'body-parser'
 import i18nextMiddleware from 'i18next-express-middleware'
 import Backend from 'i18next-node-fs-backend'
@@ -34,6 +35,9 @@ i18n
         server.use(bodyParser.json())
         server.use(i18nextMiddleware.handle(i18n))
         server.use('/locales', express.static(path.join(__dirname, '/locales')))
+
+        // add favicon
+        server.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
 
         // API
         // server.use('/oauth', createOAuthRoutes(app, server));
