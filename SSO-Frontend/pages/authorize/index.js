@@ -52,14 +52,14 @@ class AuthorizePage extends Component {
     }
 
     axiosInstance
-      .post(this.props.request_domain_url + '/v1/user/login', values)
+      .post(this.props.request_domain_url + '/v2/user/login', values)
       .then(({ data: { retCode, retMsg, data } }) => {
         if (retCode !== '200') {
           setErrors({ form: retMsg })
         } else {
           if (data) {
             //登录成功后
-            window.location = `?jwt=` + data
+              window.location = `?jwt=`+data.jwt+"&refresh_jwt="+data.refreshToken;
           } else {
             setErrors({ form: retMsg })
           }
