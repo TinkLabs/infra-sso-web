@@ -27,6 +27,7 @@ class CountrySelect extends Component {
     const inputValue = e.target.value
     this.props.onChange('country', inputValue)
     const filterCountryList = []
+
     this.props.countryList.forEach(item => {
       if (item.label.search(inputValue) !== -1) {
         filterCountryList.push(item)

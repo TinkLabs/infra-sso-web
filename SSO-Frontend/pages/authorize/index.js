@@ -23,6 +23,22 @@ class AuthorizePage extends Component {
     return { clientId, query, request_domain_url }
   }
 
+  componentDidMount() {
+    this.makeMixpanelTrack('SSO Screen View')
+  }
+
+  makeMixpanelTrack = (trackEvent, otherOptions = {}) => {
+    if (window.mixpanel) {
+      window.mixpanel.track(trackEvent, {
+        section: 'sso',
+        category: 'login',
+        subcategory: 'index',
+        screen_name: 'sso_login_index',
+        ...otherOptions
+      })
+    }
+  }
+
   _validate = values => {
     const { t } = this.props
 

@@ -16,29 +16,58 @@ import styles from './styles.less'
 import country from './country.json'
 
 const countryCode = Object.keys(country)
-const countryList = []
-countryCode.forEach(item => {
-  countryList.push({
-    value: item,
-    label: country[item]
-  })
-})
+// const countryList = []
+// countryCode.forEach(item => {
+//   countryList.push({
+//     value: item,
+//     label: country[item]
+//   })
+// })
 
 const PAGE_FOR770 = '112233'
 
 class RegisterPage extends Component {
-  state = {
-    passwordType: 'password',
-    passwordIconType: '/static/icons/secret.png',
-    confirmPasswordType: 'password',
-    confirmPasswordIconType: '/static/icons/secret.png',
-    submitted: false
-  }
-
   static getInitialProps({ query }) {
     const clientId = query.appid
     const request_domain_url = process.env.SERVERURI
     return { clientId, request_domain_url }
+  }
+
+  constructor(props) {
+    super(props)
+
+    const countryList = []
+    countryCode.forEach(item => {
+      countryList.push({
+        value: item,
+        label: this.props.t(item)
+      })
+    })
+
+    this.state = {
+      passwordType: 'password',
+      passwordIconType: '/static/icons/secret.png',
+      confirmPasswordType: 'password',
+      confirmPasswordIconType: '/static/icons/secret.png',
+      submitted: false,
+      countryList
+    }
+  }
+
+  componentDidMount() {
+    this.makeMixpanelTrack('SSO Screen View')
+  }
+
+  makeMixpanelTrack = (trackEvent, otherOptions = {}) => {
+    if (window.mixpanel) {
+      window.mixpanel.track(trackEvent, {
+        section: 'sso',
+        category: 'sign-up',
+        subcategory: 'index',
+        screen_name: 'sso_sign-up_index',
+        ...otherOptions
+      })
+    }
   }
 
   _validate = values => {
@@ -89,7 +118,7 @@ class RegisterPage extends Component {
 
     if (this.props.clientId === PAGE_FOR770) {
       let cityCode
-      countryList.forEach(item => {
+      this.state.countryList.forEach(item => {
         if (item.label === values.country) {
           cityCode = item.value
         }
@@ -201,7 +230,7 @@ class RegisterPage extends Component {
       return <Alert>{errors.form}</Alert>
     }
 
-    const { submitted } = this.state
+    const { submitted, countryList } = this.state
 
     return (
       <Container component="form" onSubmit={handleSubmit}>

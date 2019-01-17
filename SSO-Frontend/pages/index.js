@@ -5,7 +5,6 @@ import './global.less'
 import styles from './styles.less'
 import Button from './components/Button'
 import Breakline from './components/Breakline'
-import Alert from './registerQ'
 
 class IndexPage extends Component {
   static getInitialProps({ query }) {
@@ -51,20 +50,35 @@ class IndexPage extends Component {
   }
 
   componentDidMount() {
-    // if (window.WebViewClient) {
-    //   const { imei } = window.WebViewClient.getDeviceInfo()
-    //   localStorage.setItem('HANDY_ID', imei)
-    // } else {
-    //   document.addEventListener(
-    //     'WebViewClient',
-    //     function() {
-    //       const { imei } = window.WebViewClient.getDeviceInfo()
-    //       localStorage.setItem('HANDY_ID', imei)
-    //     },
-    //     false
-    //   )
-    // }
     localStorage.setItem('HANDY_ID', this.props.handyId)
+
+    this.makeMixpanelTrack('SSO Screen View')
+  }
+
+  makeMixpanelTrack = (trackEvent, otherOptions = {}) => {
+    if (window.mixpanel) {
+      window.mixpanel.track(trackEvent, {
+        section: 'sso',
+        category: 'index',
+        subcategory: 'index',
+        screen_name: 'sso_login_index',
+        ...otherOptions
+      })
+    }
+  }
+
+  handleFaceBookSign = () => {
+    this.makeMixpanelTrack('SSO Social Media Sign Up', {
+      sso_method: 'facebook'
+    })
+    window.location.href = this.props.fbLoginUri
+  }
+
+  handleGoogleSign = () => {
+    this.makeMixpanelTrack('SSO Social Media Sign Up', {
+      sso_method: 'google'
+    })
+    window.location.href = this.props.googleLoginUri
   }
 
   render() {
@@ -96,13 +110,15 @@ class IndexPage extends Component {
               <div className={styles.buttons}>
                 <Button
                   className={styles.facebook}
-                  href={this.props.fbLoginUri}
+                  // href={this.props.fbLoginUri}
+                  onClick={this.handleFaceBookSign}
                 >
                   {t(`Sign in with Facebook`)}
                 </Button>
                 <Button
                   className={styles.google}
-                  href={this.props.googleLoginUri}
+                  // href={this.props.googleLoginUri}
+                  onClick={this.handleGoogleSign}
                 >
                   {t(`Sign in with Google+`)}
                 </Button>
@@ -117,15 +133,15 @@ class IndexPage extends Component {
                   {t(`Register using Email`)}
                 </Button>
               </div>
-            </Content>
-            <Footer>
-              <div className={styles.signIn}>
-                {t(`Already have an account?`)}
-                <a href={`/authorize?appid=` + this.props.clientId}>
-                  {t(`SIGN IN`)}
-                </a>
+              <div>
+                <div className={styles.signIn}>
+                  {t(`Already have an account?`)}
+                  <a href={`/authorize?appid=` + this.props.clientId}>
+                    {t(`SIGN IN`)}
+                  </a>
+                </div>
               </div>
-            </Footer>
+            </Content>
           </Container>
         )
       } else {
@@ -176,10 +192,18 @@ class IndexPage extends Component {
             </div>
           </div>
           <div className={styles.buttons}>
-            <Button className={styles.facebook} href={this.props.fbLoginUri}>
+            <Button
+              className={styles.facebook}
+              // href={this.props.fbLoginUri}
+              onClick={this.handleFaceBookSign}
+            >
               {t(`Sign in with Facebook`)}
             </Button>
-            <Button className={styles.google} href={this.props.googleLoginUri}>
+            <Button
+              className={styles.google}
+              // href={this.props.googleLoginUri}
+              onClick={this.handleGoogleSign}
+            >
               {t(`Sign in with Google+`)}
             </Button>
             {/*<Button className={styles.wechat} href={this.props.wechatLoginUri}>*/}
@@ -193,15 +217,15 @@ class IndexPage extends Component {
               {t(`Register using Email`)}
             </Button>
           </div>
-        </Content>
-        <Footer>
-          <div className={styles.signIn}>
-            {t(`Already have an account?`)}
-            <a href={`/authorize?appid=` + this.props.clientId}>
-              {t(`SIGN IN`)}
-            </a>
+          <div>
+            <div className={styles.signIn}>
+              {t(`Already have an account?`)}
+              <a href={`/authorize?appid=` + this.props.clientId}>
+                {t(`SIGN IN`)}
+              </a>
+            </div>
           </div>
-        </Footer>
+        </Content>
       </Container>
     )
   }
