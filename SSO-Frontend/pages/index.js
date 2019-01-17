@@ -101,7 +101,7 @@ class IndexPage extends Component {
               </div>
               <div className={styles.slogan}>
                 <Trans i18nKey="Become a hi member">
-                  Become a <i>hi</i> member
+                  Become a <i>HI</i> member
                 </Trans>
                 <div className={styles.caption}>
                   {t(`and enjoy our premium features`)}
@@ -185,7 +185,7 @@ class IndexPage extends Component {
           </div>
           <div className={styles.slogan}>
             <Trans i18nKey="Become a hi member">
-              Become a <i>hi</i> member
+              Become a <i>HI</i> member
             </Trans>
             <div className={styles.caption}>
               {t(`and enjoy our premium features`)}
