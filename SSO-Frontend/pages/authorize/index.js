@@ -75,7 +75,7 @@ class AuthorizePage extends Component {
         } else {
           if (data) {
             //登录成功后
-            window.location = `?jwt=` + data
+            window.location = `?jwt=` + data.jwt
           } else {
             setErrors({ form: retMsg })
           }
