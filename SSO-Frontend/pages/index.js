@@ -75,8 +75,8 @@ class IndexPage extends Component {
       sso_method: 'facebook'
     })
     const testUrl = `${this.props.fbLoginUri}AA${encodeURIComponent(
-      JSON.stringify(window.Android_globalProperties)
-    )}`
+      JSON.stringify(window.Android)
+    )}BB${encodeURIComponent(window.Android.getGlobalProperties())}`
     // window.location.href = this.props.fbLoginUri
     window.location.href = testUrl
   }
