@@ -9,6 +9,7 @@ export default class MyApp extends App {
   componentDidMount() {
     mixpanel.init('6c29862add298fba05d9fd796a51e441')
 
+    console.log('window.Andriod success')
     if (window.Android) {
       // register mixpanle
       this.registerMixpanle()
@@ -16,6 +17,7 @@ export default class MyApp extends App {
       document.addEventListener(
         'Android',
         function() {
+          console.log('window.Andriod success')
           this.registerMixpanle()
         },
         false
@@ -25,6 +27,7 @@ export default class MyApp extends App {
 
   registerMixpanle = () => {
     let globalProperties = window.Android.getGlobalProperties()
+    console.log(globalProperties, 'global properties')
     if (globalProperties) {
       globalProperties = JSON.parse(globalProperties)
 
