@@ -8,7 +8,6 @@ import mixpanel from 'mixpanel-browser'
 export default class MyApp extends App {
   componentDidMount() {
     mixpanel.init('6c29862add298fba05d9fd796a51e441')
-    alert('window.Android ', JSON.stringify(window.Android))
     if (window.Android) {
       // register mixpanle
       this.registerMixpanle()
@@ -25,16 +24,17 @@ export default class MyApp extends App {
 
   registerMixpanle = () => {
     let globalProperties = window.Android.getGlobalProperties()
-    alert(globalProperties, 'global properties')
+    // alert(globalProperties, 'global properties')
     if (globalProperties) {
       globalProperties = JSON.parse(globalProperties)
 
-      mixpanel.register({
-        ...globalProperties
-      })
+      // mixpanel.register({
+      //   ...globalProperties
+      // })
     } else {
       globalProperties = {}
     }
+    window.Android_globalProperties = globalProperties
     window.mixpanel = mixpanel
   }
 

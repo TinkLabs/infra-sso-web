@@ -57,13 +57,16 @@ class IndexPage extends Component {
 
   makeMixpanelTrack = (trackEvent, otherOptions = {}) => {
     if (window.mixpanel) {
-      window.mixpanel.track(trackEvent, {
-        section: 'sso',
-        category: 'index',
-        subcategory: 'index',
-        screen_name: 'sso_login_index',
-        ...otherOptions
-      })
+      window.mixpanel.track(
+        trackEvent,
+        Object.assign(window.Android_globalProperties, {
+          section: 'sso',
+          category: 'index',
+          subcategory: 'index',
+          screen_name: 'sso_login_index',
+          ...otherOptions
+        })
+      )
     }
   }
 
