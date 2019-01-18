@@ -7,7 +7,10 @@ import mixpanel from 'mixpanel-browser'
 
 export default class MyApp extends App {
   componentDidMount() {
-    mixpanel.init('6c29862add298fba05d9fd796a51e441')
+    window.mixpanel = mixpanel
+    window.mixpanel.init('6c29862add298fba05d9fd796a51e441')
+    window.Android_globalProperties = {}
+
     if (window.Android) {
       // register mixpanle
       this.registerMixpanle()
@@ -35,7 +38,6 @@ export default class MyApp extends App {
       globalProperties = {}
     }
     window.Android_globalProperties = globalProperties
-    window.mixpanel = mixpanel
   }
 
   render() {
