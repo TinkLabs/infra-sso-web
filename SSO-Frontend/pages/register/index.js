@@ -116,6 +116,8 @@ class RegisterPage extends Component {
     values.appid = this.props.clientId
     setSubmitting(true)
 
+    const postData = Object.assign({}, values)
+
     if (this.props.clientId === PAGE_FOR770) {
       let cityCode
       this.state.countryList.forEach(item => {
@@ -124,14 +126,15 @@ class RegisterPage extends Component {
         }
       })
 
-      values.profile = {
+      postData.profile = {
         firstName: values.firstName,
         lastName: values.lastName,
         country: cityCode
       }
-      delete values.firstName
-      delete values.lastName
-      delete values.country
+
+      delete postData.firstName
+      delete postData.lastName
+      delete postData.country
     }
 
     const axiosInstance = axios.create()
@@ -143,7 +146,7 @@ class RegisterPage extends Component {
     }
 
     axiosInstance
-      .post(this.props.request_domain_url + `/v1/user/quickRegister`, values)
+      .post(this.props.request_domain_url + `/v1/user/quickRegister`, postData)
       .then(({ data: { retCode, retMsg, data } }) => {
         if (retCode !== '200') {
           setErrors({ form: retMsg })
