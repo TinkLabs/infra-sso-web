@@ -368,12 +368,12 @@ class RegisterPage extends Component {
                         src="/static/icons/globe.png"
                       />
                     }
-                    prepend={
-                      <img
-                        className={styles.icon}
-                        src="/static/icons/noun_dropdown.png"
-                      />
-                    }
+                    // prepend={
+                    //   <img
+                    //     className={styles.icon}
+                    //     src="/static/icons/noun_dropdown.png"
+                    //   />
+                    // }
                     error={touched.country && errors.country}
                   />
                 </div>

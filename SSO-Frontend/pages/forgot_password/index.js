@@ -337,6 +337,7 @@ class ForgotPasswordPage extends Component {
                   <img className={styles.icon} src="/static/icons/email.png" />
                 }
                 error={touched.email && errors.email}
+                autoComplete="off"
               />
             )}
 
