@@ -71,7 +71,7 @@ class IndexPage extends Component {
     this.makeMixpanelTrack('SSO Social Media Sign Up', {
       sso_method: 'facebook'
     })
-    window.location.href = testUrl
+    window.location.href = this.props.fbLoginUri
   }
 
   handleGoogleSign = () => {
