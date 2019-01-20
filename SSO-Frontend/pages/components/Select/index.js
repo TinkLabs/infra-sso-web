@@ -14,6 +14,11 @@ class CountrySelect extends Component {
   }
 
   handleFocus = () => {
+    if (!this.state.showCountryOption) {
+      const input = this.refs.myInput
+      input.focus()
+    }
+
     this.setState({
       showCountryOption: true
     })
@@ -81,8 +86,13 @@ class CountrySelect extends Component {
             onChange={e => this.handleChange(e)}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
+            ref="myInput"
           />
-          {prepend && <div className={styles.prepend}>{prepend}</div>}
+          {prepend && (
+            <div className={styles.prepend} onClick={this.handleFocus}>
+              {prepend}
+            </div>
+          )}
           {showCountryOption ? (
             <ul className={styles.optionCont}>
               {countryList.length > 0 ? (

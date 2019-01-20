@@ -65,12 +65,16 @@ class ForgotPasswordPage extends Component {
         errors.password = t(`Please enter the password`)
       }
 
-      if (
-        !isEmpty(values.password) &&
-        values.password !== values.confirm_password
-      ) {
-        errors.confirm_password = t(`Password do not match`)
+      if (isEmpty(values.confirm_password)) {
+        errors.confirm_password = t(`Please enter the confirm password`)
       }
+
+      // if (
+      //   !isEmpty(values.password) &&
+      //   values.password !== values.confirm_password
+      // ) {
+      //   errors.confirm_password = t(`Password do not match`)
+      // }
     }
 
     return errors
@@ -390,6 +394,7 @@ class ForgotPasswordPage extends Component {
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                autoFocus={false}
                 append={
                   <img
                     className={styles.icon}
