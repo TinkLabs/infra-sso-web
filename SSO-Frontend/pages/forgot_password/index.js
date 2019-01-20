@@ -69,12 +69,12 @@ class ForgotPasswordPage extends Component {
         errors.confirm_password = t(`Please enter the confirm password`)
       }
 
-      // if (
-      //   !isEmpty(values.password) &&
-      //   values.password !== values.confirm_password
-      // ) {
-      //   errors.confirm_password = t(`Password do not match`)
-      // }
+      if (
+        !isEmpty(values.password) &&
+        values.password !== values.confirm_password
+      ) {
+        errors.confirm_password = t(`Password do not match`)
+      }
     }
 
     return errors

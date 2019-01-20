@@ -74,15 +74,29 @@ class AuthorizePage extends Component {
           setErrors({ form: retMsg })
         } else {
           if (data) {
+            this.makeMixpanelTrack('SSO Complete', {
+              sso_status: 'success',
+              sso_method: 'email'
+            })
             //登录成功后
             window.location = `?jwt=` + data.jwt
           } else {
+            this.makeMixpanelTrack('SSO Complete', {
+              sso_status: 'fail',
+              fail_reason: retMsg || '',
+              sso_method: 'email'
+            })
             setErrors({ form: retMsg })
           }
         }
       })
       .catch(({ response: { data: { retCode, retMsg } } }) => {
-        console.log(retCode)
+        // console.log(retCode)
+        this.makeMixpanelTrack('SSO Complete', {
+          sso_status: 'fail',
+          fail_reason: retMsg || '',
+          sso_method: 'email'
+        })
         if (retCode === '201012') {
           setErrors({ password: t(`The password is not correct`) })
         } else if (retCode === '207002') {

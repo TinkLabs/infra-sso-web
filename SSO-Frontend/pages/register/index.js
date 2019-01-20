@@ -152,15 +152,29 @@ class RegisterPage extends Component {
           setErrors({ form: retMsg })
         } else {
           if (data) {
+            this.makeMixpanelTrack('SSO Complete', {
+              sso_status: 'success',
+              sso_method: 'email'
+            })
             //注册成功后
             this.setState({ submitted: true })
             values.jwt = data
           } else {
+            this.makeMixpanelTrack('SSO Complete', {
+              sso_status: 'fail',
+              fail_reason: retMsg || '',
+              sso_method: 'email'
+            })
             setErrors({ form: retMsg })
           }
         }
       })
       .catch(({ response: { data: { retCode, retMsg } } }) => {
+        this.makeMixpanelTrack('SSO Complete', {
+          sso_status: 'fail',
+          fail_reason: retMsg || '',
+          sso_method: 'email'
+        })
         if (retCode === '200023') {
           setErrors({ email: t(`Email has  been used`) })
         } else if (retCode === '207002') {
