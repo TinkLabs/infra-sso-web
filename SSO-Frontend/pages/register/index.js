@@ -72,7 +72,7 @@ class RegisterPage extends Component {
 
   handleLinkSucc = jwtStr => {
     const succUrl = `?jwt=${jwtStr}`
-    alert('1: ' + jwtStr + '2: ' + test)
+    alert('1: ' + jwtStr + '2: ' + succUrl)
     window.location.href = succUrl
   }
 
