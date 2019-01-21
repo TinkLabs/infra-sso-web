@@ -70,11 +70,10 @@ class RegisterPage extends Component {
     }
   }
 
-  handleTest = jwtStr => {
-    // href={`?jwt=` + values.jwt}
-    const test = `/index?jwt=${jwtStr}`
+  handleLinkSucc = jwtStr => {
+    const succUrl = `?jwt=${jwtStr}`
     alert('1: ' + jwtStr + '2: ' + test)
-    window.location.href = test
+    window.location.href = succUrl
   }
 
   _validate = values => {
@@ -448,7 +447,10 @@ class RegisterPage extends Component {
         {submitted && (
           <Footer>
             {/* <Button type="button" href={`?jwt=` + values.jwt} */}
-            <Button type="button" onClick={() => this.handleTest(values.jwt)}>
+            <Button
+              type="button"
+              onClick={() => this.handleLinkSucc(values.jwt)}
+            >
               {t(`COMPLETE`)}
             </Button>
           </Footer>
