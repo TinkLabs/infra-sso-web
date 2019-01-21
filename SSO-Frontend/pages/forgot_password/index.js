@@ -68,12 +68,13 @@ class ForgotPasswordPage extends Component {
         errors.confirm_password = t(`Please enter the confirm password`)
       }
 
-      // if (
-      //   !isEmpty(values.password) &&
-      //   values.password !== values.confirm_password
-      // ) {
-      //   errors.confirm_password = t(`Password do not match`)
-      // }
+      if (
+        !isEmpty(values.password) &&
+        !isEmpty(values.confirm_password) &&
+        values.password !== values.confirm_password
+      ) {
+        errors.confirm_password = t(`Password do not match`)
+      }
     }
 
     return errors
@@ -153,6 +154,9 @@ class ForgotPasswordPage extends Component {
               this.makeMixpanelTrack('SSO Screen View', {
                 category: 'reset-password',
                 screen_name: 'sso-reset-password-index'
+              })
+              this._setTouched({
+                fields: { password: false, confirm_password: false }
               })
             })
             setSubmitting(false)
@@ -272,7 +276,8 @@ class ForgotPasswordPage extends Component {
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting
+    isSubmitting,
+    setTouched
   }) => {
     const { t } = this.props
 
@@ -284,6 +289,8 @@ class ForgotPasswordPage extends Component {
     if (errors.form) {
       return <Alert>{errors.form}</Alert>
     }
+
+    this._setTouched = setTouched
 
     const { submitted } = this.state
 
@@ -466,6 +473,7 @@ class ForgotPasswordPage extends Component {
           password: '',
           confirm_password: ''
         }}
+        isInitialValid={false}
         validate={this._validate}
         onSubmit={this._onSubmit}
         render={this._render}
