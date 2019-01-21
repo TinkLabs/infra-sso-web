@@ -24,7 +24,7 @@ const countryCode = Object.keys(country)
 //   })
 // })
 
-const PAGE_FOR770 = '112233'
+const PAGE_FOR770 = ['112233', '563359', '855612']
 
 class RegisterPage extends Component {
   static getInitialProps({ query }) {
@@ -75,7 +75,7 @@ class RegisterPage extends Component {
 
     let errors = {}
 
-    if (this.props.clientId === PAGE_FOR770) {
+    if (PAGE_FOR770.includes(this.props.clientId)) {
       if (isEmpty(values.firstName)) {
         errors.firstName = t('Please enter the first name')
       }
@@ -118,7 +118,7 @@ class RegisterPage extends Component {
 
     const postData = Object.assign({}, values)
 
-    if (this.props.clientId === PAGE_FOR770) {
+    if (PAGE_FOR770.includes(this.props.clientId)) {
       let cityCode
       this.state.countryList.forEach(item => {
         if (item.label === values.country) {
@@ -271,7 +271,7 @@ class RegisterPage extends Component {
               {t(`Please enter your email address and set your password:`)}
             </div>
             <div className={styles.form}>
-              {this.props.clientId === PAGE_FOR770 ? (
+              {PAGE_FOR770.includes(this.props.clientId) ? (
                 <Input
                   type="text"
                   name="firstName"
@@ -286,7 +286,7 @@ class RegisterPage extends Component {
                   error={touched.firstName && errors.firstName}
                 />
               ) : null}
-              {this.props.clientId === PAGE_FOR770 ? (
+              {PAGE_FOR770.includes(this.props.clientId) ? (
                 <Input
                   type="text"
                   name="lastName"
@@ -367,7 +367,7 @@ class RegisterPage extends Component {
                 }
                 error={touched.confirm_password && errors.confirm_password}
               />
-              {this.props.clientId === PAGE_FOR770 ? (
+              {PAGE_FOR770.includes(this.props.clientId) ? (
                 <div style={{ marginBottom: '32px' }}>
                   <CountrySelect
                     value={values.country}
