@@ -79,7 +79,7 @@ class AuthorizePage extends Component {
               sso_method: 'email'
             })
             //登录成功后
-            window.location = `?jwt=` + data.jwt
+            window.location.href = `?jwt=` + data.jwt
           } else {
             this.makeMixpanelTrack('SSO Complete', {
               sso_status: 'fail',
