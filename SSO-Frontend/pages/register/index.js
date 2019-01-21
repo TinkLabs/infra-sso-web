@@ -72,7 +72,9 @@ class RegisterPage extends Component {
 
   handleTest = jwtStr => {
     // href={`?jwt=` + values.jwt}
-    window.location.href = `/resgister?jwt=${jwtStr}`
+    const test = `/index?jwt=${jwtStr}`
+    alert('1: ' + jwtStr + '2: ' + test)
+    window.location.href = test
   }
 
   _validate = values => {
@@ -164,7 +166,6 @@ class RegisterPage extends Component {
             //注册成功后
             this.setState({ submitted: true })
             values.jwt = data
-            alert('1: ' + values.jwt)
           } else {
             this.makeMixpanelTrack('SSO Complete', {
               sso_status: 'fail',
@@ -447,7 +448,7 @@ class RegisterPage extends Component {
         {submitted && (
           <Footer>
             {/* <Button type="button" href={`?jwt=` + values.jwt} */}
-            <Button type="button" onClick={this.handleTest(values.jwt)}>
+            <Button type="button" onClick={() => this.handleTest(values.jwt)}>
               {t(`COMPLETE`)}
             </Button>
           </Footer>
