@@ -25,8 +25,12 @@ export default class MyApp extends App {
 
   registerMixpanle = () => {
     let globalProperties = window.Android.getGlobalProperties()
+
     if (globalProperties) {
       globalProperties = JSON.parse(globalProperties)
+
+      const { device_user_id } = globalProperties
+      localStorage.setItem('HANDY_ID', device_user_id)
 
       mixpanel.register({
         ...globalProperties

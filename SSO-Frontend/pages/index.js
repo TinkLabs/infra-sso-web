@@ -10,8 +10,8 @@ class IndexPage extends Component {
   static getInitialProps({ query }) {
     const clientId = query.appid
     const ssoError = query.ssoError
+    const type = query.type
     const jwt = query.jwt
-    const handyId = query.devinceId
 
     //解决ios 中webview 后退时导致环境变量失效
     if (!process.env.SERVERURI || !process.env.URL) {
@@ -45,13 +45,11 @@ class IndexPage extends Component {
       ssoError,
       jwt,
       wechatLoginUri,
-      handyId
+      type
     }
   }
 
   componentDidMount() {
-    localStorage.setItem('HANDY_ID', this.props.handyId)
-
     this.makeMixpanelTrack('SSO Screen View')
   }
 
@@ -90,6 +88,25 @@ class IndexPage extends Component {
 
     if (this.props.ssoError) {
       //用户在fb授权页面时，点击了取消按钮。需要清除history信息
+      switch (this.props.type) {
+        case 'facebook':
+          this.makeMixpanelTrack('SSO Complete', {
+            sso_status: 'fail',
+            fail_reason: this.props.ssoError,
+            sso_method: 'facebook'
+          })
+          break
+        case 'google':
+          this.makeMixpanelTrack('SSO Complete', {
+            sso_status: 'fail',
+            fail_reason: this.props.ssoError,
+            sso_method: 'google'
+          })
+          break
+        default:
+          break
+      }
+
       if (
         this.props.ssoError === "The code can't be empty, please fill the code"
       ) {

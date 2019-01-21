@@ -13,7 +13,7 @@ import styles from './styles.less'
 
 class ForgotPasswordPage extends Component {
   state = {
-    submitted: 0,
+    submitted: 2,
     passwordType: 'password',
     passwordIconType: '/static/icons/secret.png',
     confirmPasswordType: 'password',
