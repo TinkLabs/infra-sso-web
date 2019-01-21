@@ -181,6 +181,7 @@ class RegisterPage extends Component {
           fail_reason: retMsg || '',
           sso_method: 'email'
         })
+        setSubmitting(false)
         if (retCode === '200023') {
           setErrors({ email: t(`Email has  been used`) })
         } else if (retCode === '207002') {
