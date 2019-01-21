@@ -236,14 +236,9 @@ class ForgotPasswordPage extends Component {
             setErrors({
               confirm_password: t(`Password length is at least at 8`)
             })
-          } else if (retCode === '200013') {
+          } else if (retCode === '202014') {
             setErrors({
               password: t(
-                `Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering`
-              )
-            })
-            setErrors({
-              confirm_password: t(
                 `Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering`
               )
             })
@@ -329,7 +324,7 @@ class ForgotPasswordPage extends Component {
           {submitted === 3 && (
             <div className={styles.remark}>
               {t(
-                `Your password for handy member has been successfully rest. You are now logged in — you can continue using handy, or visit My Account to edit your personal profile`
+                `Your password for handy member has been successfully reset. You are now logged in — you can continue using handy, or visit My Account to edit your personal profile`
               )}
             </div>
           )}

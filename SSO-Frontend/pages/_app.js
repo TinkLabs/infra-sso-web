@@ -8,6 +8,7 @@ import mixpanel from 'mixpanel-browser'
 export default class MyApp extends App {
   componentDidMount() {
     mixpanel.init('6c29862add298fba05d9fd796a51e441')
+    // const userAgent = this.getBrowserInfo()
 
     if (window.Android) {
       // register mixpanle
@@ -39,6 +40,35 @@ export default class MyApp extends App {
       globalProperties = {}
     }
     window.mixpanel = mixpanel
+  }
+
+  getBrowserInfo = () => {
+    var agent = navigator.userAgent.toLowerCase()
+
+    var regStr_ie = /msie [\d.]+;/gi
+    var regStr_ff = /firefox\/[\d.]+/gi
+    var regStr_chrome = /chrome\/[\d.]+/gi
+    var regStr_saf = /safari\/[\d.]+/gi
+
+    //IE
+    if (agent.indexOf('msie') > 0) {
+      return agent.match(regStr_ie)
+    }
+
+    //firefox
+    if (agent.indexOf('firefox') > 0) {
+      return agent.match(regStr_ff)
+    }
+
+    //Chrome
+    if (agent.indexOf('chrome') > 0) {
+      return agent.match(regStr_chrome)
+    }
+
+    //Safari
+    if (agent.indexOf('safari') > 0 && agent.indexOf('chrome') < 0) {
+      return agent.match(regStr_saf)
+    }
   }
 
   render() {
