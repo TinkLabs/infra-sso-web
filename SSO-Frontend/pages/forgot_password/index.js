@@ -324,7 +324,7 @@ class ForgotPasswordPage extends Component {
           {submitted === 3 && (
             <div className={styles.remark}>
               {t(
-                `Your password for handy member has been successfully reset. You are now logged in — you can continue using handy, or visit My Account to edit your personal profile`
+                `Your password for hi member has been successfully reset. You are now logged in — you can continue using handy, or visit My Account to edit your personal profile`
               )}
             </div>
           )}
