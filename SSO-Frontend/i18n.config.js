@@ -25,14 +25,11 @@ module.exports = {
     escapeValue: false // not needed for react!!
   },
   detection: {
-    order: [
-      /*'path', 'session', */ 'querystring1',
-      'querystring',
-      'header',
-      'cookie'
-    ],
+    order: ['session', /*'path', 'session', */ 'querystring1', 'querystring'],
     lookupQuerystring1: 'locale',
-    lookupQuerystring: 'lng'
+    lookupQuerystring: 'lng',
+
+    lookupSession: 'lng'
   },
   /*全局解决加载的时候显示原英文的问题*/
   react: {

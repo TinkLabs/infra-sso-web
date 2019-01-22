@@ -86,7 +86,7 @@ class ForgotPasswordPage extends Component {
     values.appid = this.props.clientId // this just for demo.
     values.value = values.email
     values.verificationType = 'email'
-    values.userType = '2'
+    values.useType = '2'
 
     if (this.state.submitted === 0) {
       setSubmitting(true)

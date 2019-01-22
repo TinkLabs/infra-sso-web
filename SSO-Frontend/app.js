@@ -56,7 +56,10 @@ i18n
 
         // pages
         server.use('/', createPagesRoutes(app, server))
-        server.get('*', (req, res) => handle(req, res))
+        server.get('*', (req, res) => {
+          // console.log(res.header, req.language)
+          handle(req, res)
+        })
 
         server.listen(port)
         console.log('Server is starting!')
