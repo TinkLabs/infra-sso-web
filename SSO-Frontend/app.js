@@ -11,15 +11,20 @@ import createMemberRoutes from './routes/member'
 import createPagesRoutes from './routes/pages'
 import i18nConfig from './i18n.config'
 import i18n from './i18n'
+import querystringLookup1 from './querystringLookup1'
 
 const port = process.env.PORT || 4000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+const lngDetector = new i18nextMiddleware.LanguageDetector()
+lngDetector.addDetector(querystringLookup1)
+
 i18n
   .use(Backend)
-  .use(i18nextMiddleware.LanguageDetector)
+  // .use(i18nextMiddleware.LanguageDetector)
+  .use(lngDetector)
   .init(
     {
       ...i18nConfig,
