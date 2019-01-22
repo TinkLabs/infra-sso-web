@@ -28,8 +28,8 @@ module.exports = {
     order: [
       /*'path', 'session', */ 'querystring1',
       'querystring',
-      'cookie',
-      'header'
+      'header',
+      'cookie'
     ],
     lookupQuerystring1: 'locale',
     lookupQuerystring: 'lng'

@@ -18,13 +18,13 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const lngDetector = new i18nextMiddleware.LanguageDetector()
-lngDetector.addDetector(querystringLookup1)
+// const lngDetector = new i18nextMiddleware.LanguageDetector()
+// lngDetector.addDetector(querystringLookup1)
 
 i18n
   .use(Backend)
-  // .use(i18nextMiddleware.LanguageDetector)
-  .use(lngDetector)
+  .use(i18nextMiddleware.LanguageDetector)
+  // .use(lngDetector)
   .init(
     {
       ...i18nConfig,
