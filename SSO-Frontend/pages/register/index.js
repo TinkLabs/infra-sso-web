@@ -432,7 +432,8 @@ class RegisterPage extends Component {
         )}
         {submitted && (
           <Content>
-            {t(`Now you can access our premium features`)}
+            {t(`Now you can access our premium features`)}.
+            &nbsp;
             {t(
               `You can continue on what you were doing, or visit My Account page to customise your profile`
             )}
