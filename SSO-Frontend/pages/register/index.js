@@ -286,6 +286,8 @@ class RegisterPage extends Component {
                   value={values.firstName}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  autoCapitalize="off"
+                  autoCorrect="off"
                   append={
                     <img className={styles.icon} src="/static/icons/user.png" />
                   }
@@ -302,6 +304,8 @@ class RegisterPage extends Component {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   autoComplete="off"
+                  autoCapitalize="off"
+                  autoCorrect="off"
                   append={
                     <img className={styles.icon} src="/static/icons/user.png" />
                   }
@@ -316,6 +320,8 @@ class RegisterPage extends Component {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 autoComplete="off"
+                autoCapitalize="off"
+                autoCorrect="off"
                 append={
                   <img className={styles.icon} src="/static/icons/email.png" />
                 }
@@ -432,8 +438,7 @@ class RegisterPage extends Component {
         )}
         {submitted && (
           <Content>
-            {t(`Now you can access our premium features`)}.
-            &nbsp;
+            {t(`Now you can access our premium features`)}. &nbsp;
             {t(
               `You can continue on what you were doing, or visit My Account page to customise your profile`
             )}
