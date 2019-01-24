@@ -36,6 +36,7 @@ export default class MyApp extends App {
       mixpanel.register({
         ...globalProperties
       })
+      mixpanel.identify(device_user_id)
     } else {
       globalProperties = {}
     }

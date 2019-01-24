@@ -87,6 +87,8 @@ class CountrySelect extends Component {
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             ref="myInput"
+            autoCapitalize="off"
+            autoCorrect="off"
           />
           {prepend && (
             <div className={styles.prepend} onClick={this.handleFocus}>
