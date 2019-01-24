@@ -26,6 +26,7 @@ export default class MyApp extends App {
 
   registerMixpanle = () => {
     let globalProperties = window.Android.getGlobalProperties()
+    alert('globalProperties: ' + globalProperties)
 
     if (globalProperties) {
       globalProperties = JSON.parse(globalProperties)
