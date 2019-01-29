@@ -29,12 +29,12 @@ class CountrySelect extends Component {
       isChooseCity: false
     })
 
-    const inputValue = e.target.value
+    const inputValue = e.target.value.toLowerCase()
     this.props.onChange('country', inputValue)
     const filterCountryList = []
-
+    // console.log(this.props.countryList, 11122)
     this.props.countryList.forEach(item => {
-      if (item.label.search(inputValue) !== -1) {
+      if (item.label.toLowerCase().search(inputValue) !== -1) {
         filterCountryList.push(item)
       }
     })
