@@ -147,7 +147,7 @@ class RegisterPage extends Component {
     const handyId = localStorage.getItem('HANDY_ID')
     if (handyId) {
       axiosInstance.defaults.headers = {
-        'Devcie-User-Id': localStorage.getItem('HANDY_ID')
+        'Device-User-Id': localStorage.getItem('HANDY_ID')
       }
     }
 
