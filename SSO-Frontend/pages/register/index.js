@@ -76,6 +76,10 @@ class RegisterPage extends Component {
     window.location.href = succUrl
   }
 
+  handleBackPage = () => {
+    window.location.href = `/index?appid=${this.props.clientId}`
+  }
+
   _validate = values => {
     const { t } = this.props
 
@@ -258,6 +262,9 @@ class RegisterPage extends Component {
 
     return (
       <Container component="form" onSubmit={handleSubmit}>
+        <div className={styles['back-row']}>
+          <div className={styles['back-arrow']} onClick={this.handleBackPage} />
+        </div>
         <Header>
           {!submitted && (
             <Trans i18nKey="Register for hi membership">

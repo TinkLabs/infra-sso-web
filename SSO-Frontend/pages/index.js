@@ -79,6 +79,10 @@ class IndexPage extends Component {
     window.location.href = this.props.googleLoginUri
   }
 
+  handleQuitWebview = () => {
+    window.Android.leaveSignInPage()
+  }
+
   render() {
     const { t } = this.props
 
@@ -196,6 +200,10 @@ class IndexPage extends Component {
 
     return (
       <Container>
+        <div
+          className={styles['back-arrow']}
+          onClick={this.handleQuitWebview}
+        />
         <Content>
           <div className={styles.logo}>
             <img src="/static/logo.png" />

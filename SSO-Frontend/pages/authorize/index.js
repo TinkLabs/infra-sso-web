@@ -39,6 +39,10 @@ class AuthorizePage extends Component {
     }
   }
 
+  handleBackPage = () => {
+    window.location.href = `/index?appid=${this.props.clientId}`
+  }
+
   _validate = values => {
     const { t } = this.props
 
@@ -150,6 +154,9 @@ class AuthorizePage extends Component {
 
     return (
       <Container component="form" onSubmit={handleSubmit}>
+        <div className={styles['back-row']}>
+          <div className={styles['back-arrow']} onClick={this.handleBackPage} />
+        </div>
         <Header>
           <Trans i18nKey="hi member sign in">
             <div className={styles.header}>

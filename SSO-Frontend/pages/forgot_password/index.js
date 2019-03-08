@@ -44,6 +44,24 @@ class ForgotPasswordPage extends Component {
     }
   }
 
+  // updateToken 只能使用一次，故直接跳回邮箱输入状态。
+  handleBackPage = () => {
+    switch (this.state.submitted) {
+      case 0:
+        window.location.href = `/authorize?appid=${this.props.clientId}`
+        break
+      case 1:
+      case 2:
+        this.setState({
+          submitted: 0
+        })
+        break
+      default:
+        window.location.href = `/authorize?appid=${this.props.clientId}`
+        break
+    }
+  }
+
   _validate = values => {
     const { t } = this.props
 
@@ -291,6 +309,14 @@ class ForgotPasswordPage extends Component {
 
     return (
       <Container component="form" onSubmit={handleSubmit}>
+        {[0, 1].includes(submitted) ? (
+          <div className={styles['back-row']}>
+            <div
+              className={styles['back-arrow']}
+              onClick={this.handleBackPage}
+            />
+          </div>
+        ) : null}
         <Header>
           {submitted === 0 && <span>{t(`Forgot Password`)}</span>}
           {submitted === 1 && (
