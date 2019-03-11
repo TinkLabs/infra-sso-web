@@ -80,7 +80,7 @@ class IndexPage extends Component {
   }
 
   handleQuitWebview = () => {
-    window.Android.leaveSignInPage()
+    window.Android.backToSignInPage()
   }
 
   render() {
