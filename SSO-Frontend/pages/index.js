@@ -49,6 +49,14 @@ class IndexPage extends Component {
     }
   }
 
+  constructor() {
+    super()
+
+    this.state = {
+      andriodVersion: ''
+    }
+  }
+
   componentDidMount() {
     this.makeMixpanelTrack('SSO Screen View')
 
@@ -89,7 +97,7 @@ class IndexPage extends Component {
   }
 
   renderBackArrow() {
-    const romVersion = this.state.romVersion || ''
+    const romVersion = this.state.andriodVersion
     switch (romVersion) {
       case '7.7.0':
         return null
