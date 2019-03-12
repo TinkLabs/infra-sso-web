@@ -31,8 +31,14 @@ export default class MyApp extends App {
     if (globalProperties) {
       globalProperties = JSON.parse(globalProperties)
 
-      const { device_user_id } = globalProperties
+      const { device_user_id, rom_version } = globalProperties
       localStorage.setItem('HANDY_ID', device_user_id)
+
+      // 获取 rom_version
+      if (rom_version) {
+        const romVersion = rom_version.substr(0, 5)
+        localStorage.setItem('ROM_VERSION', romVersion)
+      }
 
       mixpanel.register({
         ...globalProperties

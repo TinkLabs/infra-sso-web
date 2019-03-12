@@ -83,6 +83,32 @@ class IndexPage extends Component {
     window.Android.backToSignInPage()
   }
 
+  renderBackArrow() {
+    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+
+    switch (romVersion) {
+      case '7.7.0':
+        return null
+        break
+      case '7.8.0':
+        return (
+          <div
+            className={styles['back-arrow']}
+            onClick={this.handleQuitWebview}
+          />
+        )
+        break
+      default:
+        return (
+          <div
+            className={styles['back-arrow']}
+            onClick={this.handleQuitWebview}
+          />
+        )
+        break
+    }
+  }
+
   render() {
     const { t } = this.props
 
@@ -200,10 +226,7 @@ class IndexPage extends Component {
 
     return (
       <Container>
-        <div
-          className={styles['back-arrow']}
-          onClick={this.handleQuitWebview}
-        />
+        {this.renderBackArrow()}
         <Content>
           <div className={styles.logo}>
             <img src="/static/logo.png" />

@@ -238,6 +238,36 @@ class RegisterPage extends Component {
     })
   }
 
+  renderBackArrow() {
+    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+
+    switch (romVersion) {
+      case '7.7.0':
+        return null
+        break
+      case '7.8.0':
+        return (
+          <div className={styles['back-row']}>
+            <div
+              className={styles['back-arrow']}
+              onClick={this.handleBackPage}
+            />
+          </div>
+        )
+        break
+      default:
+        return (
+          <div className={styles['back-row']}>
+            <div
+              className={styles['back-arrow']}
+              onClick={this.handleBackPage}
+            />
+          </div>
+        )
+        break
+    }
+  }
+
   _render = ({
     values,
     errors,
@@ -262,9 +292,7 @@ class RegisterPage extends Component {
 
     return (
       <Container component="form" onSubmit={handleSubmit}>
-        <div className={styles['back-row']}>
-          <div className={styles['back-arrow']} onClick={this.handleBackPage} />
-        </div>
+        {this.renderBackArrow()}
         <Header>
           {!submitted && (
             <Trans i18nKey="Register for hi membership">

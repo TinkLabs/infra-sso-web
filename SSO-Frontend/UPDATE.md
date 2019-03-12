@@ -10,3 +10,9 @@
 繁體香港 zh-Hant-HK 
 簡體中國 zh-Hans-CN
 ```
+
+# 安卓
+
+```bash
+https://tinklabs.atlassian.net/wiki/spaces/ENG/pages/582844632/handy+Android+-+webview+javascript+functions
+```
