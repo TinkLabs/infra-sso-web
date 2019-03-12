@@ -51,6 +51,11 @@ class IndexPage extends Component {
 
   componentDidMount() {
     this.makeMixpanelTrack('SSO Screen View')
+
+    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+    this.setState({
+      andriodVersion: romVersion
+    })
   }
 
   makeMixpanelTrack = (trackEvent, otherOptions = {}) => {
@@ -84,8 +89,7 @@ class IndexPage extends Component {
   }
 
   renderBackArrow() {
-    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
-
+    const romVersion = this.state.romVersion || ''
     switch (romVersion) {
       case '7.7.0':
         return null
@@ -99,12 +103,7 @@ class IndexPage extends Component {
         )
         break
       default:
-        return (
-          <div
-            className={styles['back-arrow']}
-            onClick={this.handleQuitWebview}
-          />
-        )
+        return null
         break
     }
   }
