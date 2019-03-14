@@ -14,7 +14,9 @@ import styles from './styles.less'
 class AuthorizePage extends Component {
   state = {
     passwordType: 'password',
-    passwordIconType: '/static/icons/secret.png'
+    passwordIconType: '/static/icons/secret.png',
+
+    andriodVersion: ''
   }
 
   static getInitialProps({ query }) {
@@ -25,6 +27,11 @@ class AuthorizePage extends Component {
 
   componentDidMount() {
     this.makeMixpanelTrack('SSO Screen View')
+
+    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+    this.setState({
+      andriodVersion: romVersion
+    })
   }
 
   makeMixpanelTrack = (trackEvent, otherOptions = {}) => {
@@ -136,7 +143,7 @@ class AuthorizePage extends Component {
   }
 
   renderBackArrow() {
-    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+    const romVersion = this.state.andriodVersion
 
     switch (romVersion) {
       case '7.7.0':
@@ -153,14 +160,7 @@ class AuthorizePage extends Component {
         )
         break
       default:
-        return (
-          <div className={styles['back-row']}>
-            <div
-              className={styles['back-arrow']}
-              onClick={this.handleBackPage}
-            />
-          </div>
-        )
+        return null
         break
     }
   }

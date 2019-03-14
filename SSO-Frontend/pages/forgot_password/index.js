@@ -17,7 +17,9 @@ class ForgotPasswordPage extends Component {
     passwordType: 'password',
     passwordIconType: '/static/icons/secret.png',
     confirmPasswordType: 'password',
-    confirmPasswordIconType: '/static/icons/secret.png'
+    confirmPasswordIconType: '/static/icons/secret.png',
+
+    andriodVersion: ''
   }
 
   static getInitialProps({ query }) {
@@ -31,6 +33,11 @@ class ForgotPasswordPage extends Component {
     this.makeMixpanelTrack('SSO Screen View', {
       category: 'forgot-password',
       screen_name: 'sso_forgot-password_index'
+    })
+
+    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+    this.setState({
+      andriodVersion: romVersion
     })
   }
 
@@ -283,7 +290,7 @@ class ForgotPasswordPage extends Component {
   }
 
   renderBackArrow() {
-    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+    const romVersion = this.state.andriodVersion
 
     switch (romVersion) {
       case '7.7.0':
@@ -300,14 +307,7 @@ class ForgotPasswordPage extends Component {
         )
         break
       default:
-        return (
-          <div className={styles['back-row']}>
-            <div
-              className={styles['back-arrow']}
-              onClick={this.handleBackPage}
-            />
-          </div>
-        )
+        return null
         break
     }
   }

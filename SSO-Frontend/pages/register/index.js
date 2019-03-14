@@ -50,12 +50,19 @@ class RegisterPage extends Component {
       confirmPasswordType: 'password',
       confirmPasswordIconType: '/static/icons/secret.png',
       submitted: false,
-      countryList
+      countryList,
+
+      andriodVersion: ''
     }
   }
 
   componentDidMount() {
     this.makeMixpanelTrack('SSO Screen View')
+
+    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+    this.setState({
+      andriodVersion: romVersion
+    })
   }
 
   makeMixpanelTrack = (trackEvent, otherOptions = {}) => {
@@ -239,7 +246,7 @@ class RegisterPage extends Component {
   }
 
   renderBackArrow() {
-    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+    const romVersion = this.state.andriodVersion
 
     switch (romVersion) {
       case '7.7.0':
@@ -256,14 +263,7 @@ class RegisterPage extends Component {
         )
         break
       default:
-        return (
-          <div className={styles['back-row']}>
-            <div
-              className={styles['back-arrow']}
-              onClick={this.handleBackPage}
-            />
-          </div>
-        )
+        return null
         break
     }
   }
