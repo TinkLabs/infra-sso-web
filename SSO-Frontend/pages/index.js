@@ -61,6 +61,8 @@ class IndexPage extends Component {
     this.makeMixpanelTrack('SSO Screen View')
 
     const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+    alert('登录页面 rom version: ' + romVersion)
+
     this.setState({
       andriodVersion: romVersion
     })
