@@ -35,7 +35,7 @@ class ForgotPasswordPage extends Component {
       screen_name: 'sso_forgot-password_index'
     })
 
-    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
+    const romVersion = localStorage.getItem('ROM_VERSION') || ''
     this.setState({
       andriodVersion: romVersion
     })

@@ -59,13 +59,7 @@ class RegisterPage extends Component {
   componentDidMount() {
     this.makeMixpanelTrack('SSO Screen View')
 
-    const { romVersion } = localStorage.getItem('ROM_VERSION') || {}
-    alert(
-      '注册 rom version: ' +
-        romVersion +
-        ', localStorage: ' +
-        JSON.stringify(localStorage)
-    )
+    const romVersion = localStorage.getItem('ROM_VERSION') || ''
 
     this.setState({
       andriodVersion: romVersion
