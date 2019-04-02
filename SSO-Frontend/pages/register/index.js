@@ -211,7 +211,7 @@ class RegisterPage extends Component {
         } else if (retCode === '200013') {
           setErrors({
             password: t(
-              `Password is too simple, it MUST contain the uppercase and lowercase letters, numbers when registering`
+              `Sorry, password MUST contain the letter and digits.`
             )
           })
         } else if (retCode === '200051') {

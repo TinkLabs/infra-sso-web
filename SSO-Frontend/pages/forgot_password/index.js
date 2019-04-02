@@ -264,7 +264,7 @@ class ForgotPasswordPage extends Component {
           } else if (retCode === '202014') {
             setErrors({
               password: t(
-                `Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering`
+                `Sorry, new password MUST contain the letter and digits.`
               )
             })
           } else {
