@@ -32,7 +32,7 @@ export default class MyApp extends App {
       globalProperties = JSON.parse(globalProperties)
 
       const { device_user_id, rom_version } = globalProperties
-      localStorage.setItem('HANDY_ID', device_user_id)
+      localStorage.setItem('HANDY_ID', device_user_id || '')
 
       // 获取 rom_version
       if (rom_version) {
