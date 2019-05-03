@@ -257,9 +257,9 @@ class ForgotPasswordPage extends Component {
           } else if (retCode === '202004') {
             setErrors({ form: t(`Email is not registered`) })
           } else if (retCode === '200012') {
-            setErrors({ password: t(`Password length is at least at 8`) })
+            setErrors({ password: t(`Your password must be at least 8 characters`) })
             setErrors({
-              confirm_password: t(`Password length is at least at 8`)
+              confirm_password: t(`Your password must be at least 8 characters`)
             })
           } else if (retCode === '202014') {
             setErrors({

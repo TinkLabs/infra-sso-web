@@ -88,7 +88,7 @@ class RegisterQPage extends Component {
         } else if (retCode === '207002') {
           setErrors({ form: t(`No APP ID ,please call customer services`) })
         } else if (retCode === '200012') {
-          setErrors({ password: t(`Password length is at least at 8`) })
+          setErrors({ password: t(`Your password must be at least 8 characters`) })
         } else if (retCode === '200001') {
           setErrors({
             password: t(`The Email length is at least 8 when registering`)
@@ -102,7 +102,7 @@ class RegisterQPage extends Component {
         } else if (retCode === '200013') {
           setErrors({
             password: t(
-              `Sorry, password MUST contain the letter and digits.`
+              `Your password must contain letters and numbers`
             )
           })
         } else if (retCode === '200051') {
@@ -242,9 +242,9 @@ class RegisterQPage extends Component {
         )}
         {submitted && (
           <Content>
-            {t(`Now you can access our premium features.`)}
+            {t(`Now you can access our premium features and get exclusive travel offers..`)}
             {t(
-              `You can continue on what you were doing, or visit My Account page to customise your profile.`
+              `You may now continue what you were doing, or visit the My Account page to customize your profile..`
             )}
           </Content>
         )}

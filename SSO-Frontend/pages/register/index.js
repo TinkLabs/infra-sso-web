@@ -199,7 +199,7 @@ class RegisterPage extends Component {
         } else if (retCode === '207002') {
           setErrors({ form: t(`No APP ID ,please call customer services`) })
         } else if (retCode === '200012') {
-          setErrors({ password: t(`Password length is at least at 8`) })
+          setErrors({ password: t(`Your password must be at least 8 characters`) })
         } else if (retCode === '200001') {
           setErrors({
             email: t(`The Email length is at least 8 when registering`)
@@ -211,7 +211,7 @@ class RegisterPage extends Component {
         } else if (retCode === '200013') {
           setErrors({
             password: t(
-              `Sorry, password MUST contain the letter and digits.`
+              `Your password must contain letters and numbers`
             )
           })
         } else if (retCode === '200051') {
@@ -303,8 +303,8 @@ class RegisterPage extends Component {
             </Trans>
           )}
           {submitted && (
-            <Trans i18nKey="Thank you for joining hi member!">
-              Thank you for joining <b>hi </b> member!
+            <Trans i18nKey="Thank you for becoming a hi member!">
+              Thank you for becoming a <b>hi</b> member!
             </Trans>
           )}
         </Header>
@@ -474,9 +474,9 @@ class RegisterPage extends Component {
         )}
         {submitted && (
           <Content>
-            {t(`Now you can access our premium features`)}. &nbsp;
+            {t(`Now you can access our premium features and get exclusive travel offers.`)}. &nbsp;
             {t(
-              `You can continue on what you were doing, or visit My Account page to customise your profile`
+              `You may now continue what you were doing, or visit the My Account page to customize your profile.`
             )}
           </Content>
         )}
