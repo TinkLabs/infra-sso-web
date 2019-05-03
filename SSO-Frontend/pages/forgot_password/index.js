@@ -167,8 +167,8 @@ class ForgotPasswordPage extends Component {
                     } else if (retCode === '202004') {
                         setErrors({form: t(`Email is not registered`)});
                     } else if(retCode==='200012'){
-                        setErrors({password: t(`Password length is at least at 8`)});
-                        setErrors({confirm_password: t(`Password length is at least at 8`)});
+                        setErrors({password: t(`Your password must be at least 8 characters`)});
+                        setErrors({confirm_password: t(`Your password must be at least 8 characters`)});
                     } else if(retCode==='200013'){
                         setErrors({password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering`)});
                         setErrors({confirm_password: t(`Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering`)});
