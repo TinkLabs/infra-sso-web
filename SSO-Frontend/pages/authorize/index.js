@@ -185,7 +185,7 @@ class AuthorizePage extends Component {
     return (
       <Container component="form" onSubmit={handleSubmit}>
         {this.renderBackArrow()}
-      
+
         {/* <Header>
           <Trans i18nKey="hi member sign in">
             <div className={styles.header}>
@@ -199,7 +199,7 @@ class AuthorizePage extends Component {
           {/* <div className={styles.remark}>
             {t(`Please enter your email address and password:`)}
           </div> */}
-          
+
           <div className={styles.form}>
             <Input
               type="text"
@@ -242,7 +242,8 @@ class AuthorizePage extends Component {
           </div>
         </Content>
         <Footer>
-          <Button type="submit" disabled={isSubmitting}>
+          <Button type="submit" disabled={isSubmitting}
+            className="btn btn-navy btn-m btn-contained">
             {' '}
             {t(`SIGN IN`)}{' '}
           </Button>
@@ -268,7 +269,7 @@ class AuthorizePage extends Component {
   }
 }
 
-;`translate.setDefaults({
+; `translate.setDefaults({
    wait: true,
  });`
 export default translate()(AuthorizePage)

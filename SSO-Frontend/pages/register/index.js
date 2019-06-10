@@ -493,7 +493,8 @@ class RegisterPage extends Component {
         )}
         {!submitted && (
           <Footer className="register-submit">
-            <Button type="submit" disabled={isSubmitting}>
+            <Button type="submit" disabled={isSubmitting}
+              className="btn btn-navy btn-m btn-contained">
               {t(`CREATE ACCOUNT`)}
             </Button>
           </Footer>
@@ -504,6 +505,7 @@ class RegisterPage extends Component {
             <Button
               type="button"
               onClick={() => this.handleLinkSucc(values.jwt)}
+              className="btn btn-navy btn-m btn-contained"
             >
               {t(`COMPLETE`)}
             </Button>

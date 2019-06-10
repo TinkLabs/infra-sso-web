@@ -6,6 +6,8 @@ import styles from './styles.less'
 import Button from './components/Button'
 import Breakline from './components/Breakline'
 
+import classNames from 'classnames';
+
 class IndexPage extends Component {
   static getInitialProps({ query }) {
     const clientId = query.appid
@@ -182,7 +184,8 @@ class IndexPage extends Component {
                 {/*</Button>*/}
                 <Breakline>{t(`or`)}</Breakline>
                 <Button
-                  className={styles.email}
+                  // className={styles.email}
+                  className={classNames([styles.email, 'btn btn-m btn-outlined'])}
                   href={`/register?appid=` + this.props.clientId}
                 >
                   {t(`Register using Email`)}
@@ -267,7 +270,7 @@ class IndexPage extends Component {
             {/*</Button>*/}
             <Breakline>{t(`or`)}</Breakline>
             <Button
-              className={styles.email}
+              className={classNames([styles.email, 'btn btn-m btn-outlined'])}
               href={`/register?appid=` + this.props.clientId}
             >
               {t(`Register using Email`)}
