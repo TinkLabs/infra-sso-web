@@ -485,7 +485,7 @@ class ForgotPasswordPage extends Component {
           <Footer className="forget-pw-get-code">
             <Button type="submit" disabled={isSubmitting}
               className="btn btn-navy btn-m btn-contained">
-              {t(`SEND ME THE CODE`)}
+              {t(`Send the Code`)}
             </Button>
           </Footer>
         )}

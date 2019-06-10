@@ -16,7 +16,7 @@ class IndexPage extends Component {
     //解决ios 中webview 后退时导致环境变量失效
     console.log(process.env, 299999)
     if (!process.env.SERVERURI || !process.env.URL) {
-      location.reload()
+      // location.reload()
     }
 
     const fbLoginUri =
