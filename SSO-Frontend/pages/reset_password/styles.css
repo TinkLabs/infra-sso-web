@@ -1,0 +1,22 @@
+.remark {
+  margin-bottom: 75px;
+}
+.form .icon {
+  width: 24px;
+}
+.forgotPassword {
+  text-align: right;
+  margin-top: -28px;
+  margin-bottom: 44px;
+  padding-right: 4px;
+  width: unset;
+}
+.forgotPassword a {
+  width: unset;
+  float: right;
+  cursor: pointer;
+  margin-top: 6px;
+  color: #c19a53;
+  background-color: #002855;
+  height: 48px;
+}

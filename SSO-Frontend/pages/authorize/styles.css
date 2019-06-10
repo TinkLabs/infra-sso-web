@@ -1,0 +1,45 @@
+.back-row {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  position: fixed;
+  background: #0b1733;
+  padding-left: 16px;
+  top: 16px;
+}
+.back-row .back-arrow {
+  width: 40px;
+  height: 40px;
+  background: url('/static/icons/ic_arrow_back_white2.png') no-repeat center;
+  background-size: 30px;
+  cursor: pointer;
+}
+.header i {
+  color: #fff;
+}
+.remark {
+  display: none;
+}
+.form .icon {
+  display: none;
+}
+.forgotPassword {
+  text-align: right;
+  margin-top: -28px;
+  margin-bottom: 44px;
+  padding-right: 4px;
+  width: unset;
+}
+.forgotPassword a {
+  width: unset;
+  float: right;
+  cursor: pointer;
+  margin-top: 6px;
+  color: #c19a53;
+  font-family: Montserrat;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 14px;
+  text-decoration: underline;
+}

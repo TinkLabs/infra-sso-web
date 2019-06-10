@@ -1,79 +1,118 @@
 @import (reference) '~bootstrap/less/mixins.less';
 
 .back-arrow {
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  width: 32px;
-  height: 32px;
-  background: url('/static/icons/ic_arrow_back_white2.png') no-repeat center;
-  background-size: 30px;
-  cursor: pointer;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 32px;
+    height: 32px;
+    background: url('/static/icons/ic_arrow_back_white2.png') no-repeat center;
+    background-size: 30px;
+    cursor: pointer;
 }
 
 .logo {
-  margin-top: 40px;
-  text-align: center;
+    // top bar + top spacing
+    margin-top: 16px;
+    margin-bottom: 22px;
+    text-align: center;
 
-  & > img {
-    width: 125px;
-  }
+    &>img {
+        width: 64px;
+    }
 }
 
 .slogan {
-  margin-top: 16px;
-  font-size: 24px;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.56);
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 20px;
+    text-align: center;
 
-  i {
-    color: #fff;
-  }
+    i {
+        // color: #fff;
+        color: rgba(0, 0, 0, 0.56);
+    }
 
-  & > .caption {
-    margin-top: 15px;
-    font-size: 15px;
-  }
+    &>.caption {}
 }
 
 .buttons {
-  margin-top: 48px;
+    margin-top: 24px;
 
-  .facebook {
-    margin-bottom: 10px;
-    background: #3b5998 url('/static/icons/facebook.png') no-repeat 16px 8px;
-    background-size: 32px 32px;
-  }
+    .facebook {
+        background: #3a5997;
+        border-color: #3a5997;
+        color: #fff;
 
-  .google {
-    margin-bottom: 10px;
-    background: #dc4e41 url('/static/icons/google.png') no-repeat 16px 8px;
-    background-size: 32px 32px;
-  }
+        height: 48px;
+        border-radius: 4px;
+        margin: 8px 0 16px 0;
 
-  .wechat {
-    margin-bottom: 10px;
-    background: #7bb32e url('/static/icons/wechat.png') no-repeat 16px 8px;
-    background-size: 32px 32px;
-  }
+        font-family: Montserrat;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0px;
+        line-height: 24px;
+        text-align: center;
+    }
 
-  .email {
-    border: 1px solid #cba052;
-    margin-bottom: 10px;
-    color: #cba052;
-    background-color: transparent;
-  }
+    .google {
+        background-color: #da4f33;
+        border-color: #da4f33;
+        color: #fff;
+
+        height: 48px;
+        border-radius: 4px;
+        margin: 8px 0 16px 0;
+
+        font-family: Montserrat;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0px;
+        line-height: 24px;
+        text-align: center;
+    }
+
+    .wechat {
+        margin-bottom: 10px;
+        background: #7bb32e url('/static/icons/wechat.png') no-repeat 16px 8px;
+        background-size: 32px 32px;
+    }
+
+    .email {
+        border: 1px solid #c19a53;
+        margin-bottom: 10px;
+        color: #c19a53;
+        background-color: transparent;
+
+        height: 48px;
+        border-radius: 4px;
+        margin: 8px 0 16px 0;
+    }
 }
 
 .signIn {
-  color: #757c87;
-  font-size: 13px;
-  .clearfix();
-  margin-top: 16px;
+    // Body2
+    color: rgba(0, 0, 0, 0.56);
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    line-height: 20px;
+    text-align: left;
+    
+    .clearfix();
+    
+    margin-top: 16px;
+    width: 100%;
 
-  & > a {
-    float: right;
-    color: #cba052;
-    text-decoration-line: none;
-  }
+    &>a {
+        width: unset;
+        float: right;
+        color: #c19a53;
+        text-decoration-line: none;
+    }
 }

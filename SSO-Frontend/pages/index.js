@@ -152,7 +152,7 @@ class IndexPage extends Component {
           <Container>
             <Content>
               <div className={styles.logo}>
-                <img src="/static/logo.png" />
+                <img src="/static/logo_hiinc.svg" />
               </div>
               <div className={styles.slogan}>
                 <Trans i18nKey="Become a hi member">
@@ -237,7 +237,7 @@ class IndexPage extends Component {
         {this.renderBackArrow()}
         <Content>
           <div className={styles.logo}>
-            <img src="/static/logo.png" />
+            <img src="/static/logo_hiinc.svg" />
           </div>
           <div className={styles.slogan}>
             <Trans i18nKey="Become a hi member">

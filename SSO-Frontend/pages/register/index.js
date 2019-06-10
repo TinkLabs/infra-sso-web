@@ -297,10 +297,18 @@ class RegisterPage extends Component {
         <Header>
           {!submitted && (
             <Trans i18nKey="Register for hi membership">
+
+              {/* i18nKey="Create an account" */}
+
               <div className={styles.header}>
                 Register for <i>hi</i> membership
               </div>
             </Trans>
+          )}
+          {submitted && (
+            <div className={styles.logo}>
+              <img src="/static/logo_hiinc.svg" />
+            </div>
           )}
           {submitted && (
             <Trans i18nKey="Thank you for becoming a hi member!">
@@ -452,8 +460,8 @@ class RegisterPage extends Component {
                   {t(`By signing up, I agree to hi’s`)}{' '}
                   <a
                     style={{
-                      color: '#cba052',
-                      textDecoration: 'none',
+                      color: '#c19a53',
+                      textDecoration: 'underline',
                       display: 'contents'
                     }}
                     href="https://www.hiinc.com/terms-and-privacy-policy"
@@ -462,7 +470,10 @@ class RegisterPage extends Component {
                   </a>{' '}
                   {t(`and`)}{' '}
                   <a
-                    style={{ color: '#cba052', textDecoration: 'none' }}
+                    style={{
+                      color: '#c19a53',
+                      textDecoration: 'underline'
+                    }}
                     href="https://www.hiinc.com/terms-and-privacy-policy"
                   >
                     {t(`Privacy Policy`)}
@@ -481,14 +492,14 @@ class RegisterPage extends Component {
           </Content>
         )}
         {!submitted && (
-          <Footer>
+          <Footer className="register-submit">
             <Button type="submit" disabled={isSubmitting}>
               {t(`CREATE ACCOUNT`)}
             </Button>
           </Footer>
         )}
         {submitted && (
-          <Footer>
+          <Footer className="toBottom">
             {/* <Button type="button" href={`?jwt=` + values.jwt} */}
             <Button
               type="button"

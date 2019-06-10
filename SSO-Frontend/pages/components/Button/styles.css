@@ -1,0 +1,29 @@
+.button {
+  width: 100%;
+  border: none;
+  color: #ffffff;
+  background: #002855;
+  height: 48px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 18px;
+  letter-spacing: normal;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+.button[type=submit] {
+  background-color: #002855;
+  border-color: #002855;
+  color: #fff;
+  height: 48px;
+}

@@ -1,18 +1,14 @@
 .wrapper {
   margin-bottom: 20px;
 }
-
 .container {
   display: table;
   width: 100%;
-  // border-bottom: 1px solid #ffffff;
   position: relative;
 }
-
 .errorContainer {
   border-bottom-color: #ff0102;
 }
-
 .input {
   display: table-cell;
   width: 100%;
@@ -22,31 +18,26 @@
   background-color: transparent;
   outline: none;
 }
-
 .append {
   display: table-cell;
   width: 1%;
   text-align: center;
   vertical-align: middle;
 }
-
 .prepend {
   display: table-cell;
   width: 1%;
   text-align: center;
   vertical-align: middle;
-
-  img {
-    width: 20px !important;
-  }
 }
-
+.prepend img {
+  width: 20px !important;
+}
 .error {
   margin-top: 5px;
   color: #ff2020;
   font-size: 11px;
 }
-
 .optionCont {
   position: absolute;
   width: 100%;
@@ -63,11 +54,10 @@
   -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
   z-index: 10;
-
-  .optionItem {
-    width: 100%;
-    padding: 0 10px;
-    height: 30px;
-    line-height: 30px;
-  }
+}
+.optionCont .optionItem {
+  width: 100%;
+  padding: 0 10px;
+  height: 30px;
+  line-height: 30px;
 }

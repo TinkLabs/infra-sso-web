@@ -185,17 +185,21 @@ class AuthorizePage extends Component {
     return (
       <Container component="form" onSubmit={handleSubmit}>
         {this.renderBackArrow()}
-        <Header>
+      
+        {/* <Header>
           <Trans i18nKey="hi member sign in">
             <div className={styles.header}>
               <i>hi</i> member sign in
             </div>
           </Trans>
-        </Header>
+        </Header> */}
+
         <Content>
-          <div className={styles.remark}>
+
+          {/* <div className={styles.remark}>
             {t(`Please enter your email address and password:`)}
-          </div>
+          </div> */}
+          
           <div className={styles.form}>
             <Input
               type="text"

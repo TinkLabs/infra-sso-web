@@ -348,6 +348,11 @@ class ForgotPasswordPage extends Component {
           {submitted === 2 && (
             <span>{t(`Please input your new Password`)}</span>
           )}
+          {submitted === 3 && (
+              <div className="forget-pw-logo-wrapper">
+                <span className="logo icon icon-general_check_circle_24px"></span>
+              </div>
+          )}
           {submitted === 3 && <span>{t(`Your password has been reset `)}</span>}
         </Header>
         <Content>
@@ -477,29 +482,33 @@ class ForgotPasswordPage extends Component {
         {/*<br/><br/><br/><br/>*/}
         {/*</Content>}*/}
         {submitted === 0 && (
-          <Footer>
-            <Button type="submit" disabled={isSubmitting}>
+          <Footer className="forget-pw-get-code">
+            <Button type="submit" disabled={isSubmitting}
+              className="btn btn-navy btn-m btn-contained">
               {t(`SEND ME THE CODE`)}
             </Button>
           </Footer>
         )}
         {submitted === 1 && (
-          <Footer>
-            <Button type="submit" disabled={isSubmitting}>
+          <Footer className="forget-pw-submit-code">
+            <Button type="submit" disabled={isSubmitting}
+              className="btn btn-navy btn-m btn-contained">
               {t(`VERIFY ME THE CODE`)}
             </Button>
           </Footer>
         )}
         {submitted === 2 && (
-          <Footer>
-            <Button type="submit" disabled={isSubmitting}>
+          <Footer className="forget-pw-submit-code">
+            <Button type="submit" disabled={isSubmitting}
+              className="btn btn-navy btn-m btn-contained">
               {t(`RESET PASSWORD`)}
             </Button>
           </Footer>
         )}
         {submitted === 3 && (
-          <Footer>
-            <Button type="button" href={`/authorize?appid=` + values.appid}>
+          <Footer className="toBottom">
+            <Button type="button" href={`/authorize?appid=` + values.appid}
+              className="btn btn-navy btn-m btn-contained">
               {t(`COMPLETE`)}
             </Button>
           </Footer>
