@@ -14,6 +14,7 @@ class IndexPage extends Component {
     const jwt = query.jwt
 
     //解决ios 中webview 后退时导致环境变量失效
+    console.log(process.env, 299999)
     if (!process.env.SERVERURI || !process.env.URL) {
       location.reload()
     }
@@ -58,6 +59,8 @@ class IndexPage extends Component {
   }
 
   componentDidMount() {
+    console.log(process.env, 299999)
+
     this.makeMixpanelTrack('SSO Screen View')
 
     const romVersion = localStorage.getItem('ROM_VERSION') || ''
@@ -154,28 +157,21 @@ class IndexPage extends Component {
               <div className={styles.logo}>
                 <img src="/static/logo_hiinc.svg" />
               </div>
-              <div className={styles.slogan}>
-                <Trans i18nKey="Become a hi member">
-                  Become a <i>hi</i> member
-                </Trans>
-                <div className={styles.caption}>
-                  {t(`and enjoy our premium features`)}
-                </div>
-              </div>
+              <div className={styles.slogan} dangerouslySetInnerHTML={{__html: t('Become a hi member')}} />
               <div className={styles.buttons}>
                 <Button
                   className={styles.facebook}
                   // href={this.props.fbLoginUri}
                   onClick={this.handleFaceBookSign}
                 >
-                  {t(`Sign in with Facebook`)}
+                  {t(`Continue with Facebook`)}
                 </Button>
                 <Button
                   className={styles.google}
                   // href={this.props.googleLoginUri}
                   onClick={this.handleGoogleSign}
                 >
-                  {t(`Sign in with Google+`)}
+                  {t(`Continue with Google`)}
                 </Button>
                 {/*<Button className={styles.wechat} href={this.props.wechatLoginUri}>*/}
                 {/*{t(`Sign in with Wechat`)}*/}
@@ -239,28 +235,21 @@ class IndexPage extends Component {
           <div className={styles.logo}>
             <img src="/static/logo_hiinc.svg" />
           </div>
-          <div className={styles.slogan}>
-            <Trans i18nKey="Become a hi member">
-              Become a <i>hi</i> member
-            </Trans>
-            <div className={styles.caption}>
-              {t(`and enjoy our premium features`)}
-            </div>
-          </div>
+          <div className={styles.slogan} dangerouslySetInnerHTML={{__html: t('Become a hi member')}} />
           <div className={styles.buttons}>
             <Button
               className={styles.facebook}
               // href={this.props.fbLoginUri}
               onClick={this.handleFaceBookSign}
             >
-              {t(`Sign in with Facebook`)}
+              {t(`Continue with Facebook`)}
             </Button>
             <Button
               className={styles.google}
               // href={this.props.googleLoginUri}
               onClick={this.handleGoogleSign}
             >
-              {t(`Sign in with Google+`)}
+              {t(`Continue with Google`)}
             </Button>
             {/*<Button className={styles.wechat} href={this.props.wechatLoginUri}>*/}
             {/*{t(`Sign in with Wechat`)}*/}

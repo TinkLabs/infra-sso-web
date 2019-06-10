@@ -39,7 +39,7 @@ class ResetPasswordPage extends Component {
     let errors = {}
 
     if (isEmpty(values.password)) {
-      errors.password = t(`Please enter the password.`)
+      errors.password = t(`Incorrect password.`)
     }
 
     if (

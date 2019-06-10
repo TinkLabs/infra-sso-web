@@ -75,7 +75,7 @@ class ForgotPasswordPage extends Component {
     let errors = {}
 
     if (!isEmail(values.email)) {
-      errors.email = t(`Please enter an valid email`)
+      errors.email = t(`Invalid email address.`)
     }
 
     if (this.state.submitted >= 1) {
@@ -86,7 +86,7 @@ class ForgotPasswordPage extends Component {
     }
     if (this.state.submitted >= 2) {
       if (isEmpty(values.password)) {
-        errors.password = t(`Please enter the password`)
+        errors.password = t(`Incorrect password.`)
       }
 
       if (isEmpty(values.confirm_password)) {
@@ -359,7 +359,7 @@ class ForgotPasswordPage extends Component {
           {submitted === 0 && (
             <div className={styles.remark}>
               {t(
-                `Please enter your email address to receive a reset password Code:`
+                `Continue to receive a password reset code.`
               )}
             </div>
           )}

@@ -108,11 +108,11 @@ class RegisterPage extends Component {
     }
 
     if (!isEmail(values.email)) {
-      errors.email = t(`Please enter an valid email`)
+      errors.email = t(`Invalid email address.`)
     }
 
     if (isEmpty(values.password)) {
-      errors.password = t(`Please enter the password`)
+      errors.password = t(`Incorrect password.`)
     }
 
     if (
