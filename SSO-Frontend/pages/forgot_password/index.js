@@ -256,7 +256,7 @@ class ForgotPasswordPage extends Component {
             setErrors({ form: t(`No APP ID ,please call customer services`) })
           } else if (retCode === '202004') {
             setErrors({ form: t(`Email is not registered`) })
-          } else if (retCode === '200012') {
+          } else if (retCode === '202013') {
             setErrors({ password: t(`Your password must be at least 8 characters`) })
             setErrors({
               confirm_password: t(`Your password must be at least 8 characters`)
