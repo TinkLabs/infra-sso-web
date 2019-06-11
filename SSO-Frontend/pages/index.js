@@ -228,7 +228,8 @@ class IndexPage extends Component {
         <Container>
           <Content>
             <div className={styles.slogan}>
-              <div className={styles.caption}>{t(`loding......`)}</div>
+              {/* loding -> loading */}
+              <div className={styles.caption}>{t(`loading......`)}</div>
             </div>
           </Content>
         </Container>
