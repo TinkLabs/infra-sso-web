@@ -425,7 +425,7 @@ class RegisterPage extends Component {
                 error={touched.confirm_password && errors.confirm_password}
               />
               {PAGE_FOR770.includes(this.props.clientId) ? (
-                <div style={{ marginBottom: '32px' }}>
+                <div style={{ marginBottom: '0' }}>
                   <CountrySelect
                     value={values.country}
                     countryList={countryList}
