@@ -125,7 +125,7 @@ class ResetPasswordPage extends Component {
               <Input
                 type="password"
                 name="confirm_password"
-                placeholder="Confirm Password"
+                placeholder="Re-enter password"
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}

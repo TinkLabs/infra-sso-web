@@ -179,7 +179,7 @@ class RegisterQPage extends Component {
               <Input
                 type="text"
                 name="email"
-                placeholder="Email Address"
+                placeholder="Email address"
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -212,7 +212,7 @@ class RegisterQPage extends Component {
                 }}
                 type="password"
                 name="confirm_password"
-                placeholder="Confirm Password"
+                placeholder="Re-enter password"
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -234,7 +234,7 @@ class RegisterQPage extends Component {
                 error={touched.accept_tnc && errors.accept_tnc}
               >
                 {t(
-                  `By signing up, I agree to handy’s Terms & Conditions and Privacy Policy.`
+                  `By signing up, I agree to the Terms & Conditions and Privacy Policy.`
                 )}
               </Checkbox>
             </div>

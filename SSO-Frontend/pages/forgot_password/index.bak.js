@@ -332,7 +332,7 @@ class ForgotPasswordPage extends Component {
               <Input
                 type="text"
                 name="email"
-                placeholder={t(`email address`)}
+                placeholder={t(Email address)}
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -389,7 +389,7 @@ class ForgotPasswordPage extends Component {
               <Input
                 type={confirmPasswordType}
                 name="confirm_password"
-                placeholder={t(`Confirm Password`)}
+                placeholder={t(`Re-enter password`)}
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}

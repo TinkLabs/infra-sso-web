@@ -296,7 +296,7 @@ class RegisterPage extends Component {
         {this.renderBackArrow()}
         <Header>
           {!submitted && (
-            <Trans i18nKey="Register for hi membership">
+            <Trans i18nKey="Create an account">
 
               {/* i18nKey="Create an account" */}
 
@@ -319,7 +319,7 @@ class RegisterPage extends Component {
         {!submitted && (
           <Content>
             <div className={styles.remark}>
-              {t(`Please enter your email address and set your password:`)}
+              {t(`Become a hi member and get access to premium features.`)}
             </div>
             <div className={styles.form}>
               {PAGE_FOR770.includes(this.props.clientId) ? (
@@ -359,7 +359,7 @@ class RegisterPage extends Component {
               <Input
                 type="text"
                 name="email"
-                placeholder={t(`email address`)}
+                placeholder={t("Email address")}
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -399,7 +399,7 @@ class RegisterPage extends Component {
               <Input
                 type={confirmPasswordType}
                 name="confirm_password"
-                placeholder={t(`Confirm Password`)}
+                placeholder={t(`Re-enter password`)}
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -457,7 +457,30 @@ class RegisterPage extends Component {
                   error={touched.accept_tnc && errors.accept_tnc}
                 />
                 <div className={styles.privacyTips}>
-                  {t(`By signing up, I agree to hi’s`)}{' '}
+                {/* <Trans i18nKey="By signing up, I agree to the ">
+                  By signing up, I agree to the 
+                  <a
+                    style={{
+                      color: '#c19a53',
+                      textDecoration: 'underline',
+                      display: 'contents'
+                    }}
+                    href="https://www.hiinc.com/terms-and-privacy-policy"
+                  >
+                    Terms & Conditions
+                  </a>{' '}
+                  and{' '}
+                  <a
+                    style={{
+                      color: '#c19a53',
+                      textDecoration: 'underline'
+                    }}
+                    href="https://www.hiinc.com/terms-and-privacy-policy"
+                  >
+                    Privacy Policy
+                  </a>
+                </Trans> */}
+                  {t(`By signing up, I agree to the `)}{' '}
                   <a
                     style={{
                       color: '#c19a53',
