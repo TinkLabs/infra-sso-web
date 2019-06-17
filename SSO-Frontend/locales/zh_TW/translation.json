@@ -39,7 +39,7 @@
   "Sorry, This newPassword no change, please fill in the newPassword": "對不起，該密碼與上一個您使用的密碼一致，請重新輸入新的密碼",
   "Incorrect password.": "請輸入密碼",
   "Please enter your email address and password:": "請輸入郵箱地址及密碼:",
-  "Become a hi member and get access to premium features.": "請輸入郵箱地址以及密碼:",
+  "Become a hi member and get access to premium features.": "成為 hi 會員，享用進階功能。",
   "Continue to receive a password reset code.": "請輸入您的郵箱地址已獲取驗證碼:",
   "Please enter your new password to reset and access your account:": "請輸入您的新密碼\n:",
   "The email is not existed when sending verification code, please register firstly": "發送驗證碼時不存在電子郵件，請先註冊:",
@@ -80,7 +80,7 @@
   "and enjoy our premium features": "並且享受我們的會員專屬權益",
   "After reset your password ,you will be redirect to Login page and login again": "重置密碼後，您將重定向到登錄頁面並再次登錄",
   "handy is trademarks or registered trademarks of Tink Labs Limited with headquarters located at  1/F , 101 King's Road, North Point, Hong Kong": "handy是Tink Labs Limited的商標或註冊商標，總部位於香港北角英皇道101號1樓",
-  "By signing up, I agree to the ": "點擊註冊，即表示你同意接受",
+  "By signing up, I agree to the Terms & Conditions": "當您註冊，即表示您同意<1>《條款及細則》</1>和<5>《私隱政策》</5>。",
   "Terms & Conditions": "條款和條件",
   "and": "和",
   "Privacy Policy": "隱私政策",

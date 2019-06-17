@@ -39,7 +39,7 @@
   "Sorry, This newPassword no change, please fill in the newPassword": "申し訳ありません。このパスワードは変更されていません。新しいパスワードを入力してください",
   "Incorrect password.": "パスワードを入力してください",
   "Please enter your email address and password:": "あなたのメールアドレスとパスワードを入力してください:",
-  "Become a hi member and get access to premium features.": "あなたのメールアドレスを入力してパスワードを設定してください:",
+  "Become a hi member and get access to premium features.": "hiメンバーになり、プレミアム機能へのアクセスを手に入れましょう。",
   "Continue to receive a password reset code.": "パスワードリセットコードを受け取るためのメールアドレスを入力してください:",
   "Please enter your new password to reset and access your account:": "リセットしてアカウントにアクセスするには、新しいパスワードを入力してください:",
   "The email is not existed when sending verification code, please register firstly": "確認コードを送信する際の送り先メールアドレスが存在しません。はじめに登録してください:",
@@ -80,7 +80,7 @@
   "and enjoy our premium features": "弊社のプレミアムオプションをお楽しみください",
   "After reset your password ,you will be redirect to Login page and login again": "パスワードをリセットした後、自動的にログインページに移動し、再度ログインします",
   "handy is trademarks or registered trademarks of Tink Labs Limited with headquarters located at  1/F , 101 King's Road, North Point, Hong Kong": "Handyは、Hong Kong,North Point,101 King's Road1/Fに本社を構えるTink Labs Limitedの商標または登録商標です。",
-  "By signing up, I agree to the ": "サインアップにより、 hi’sに同意します",
+  "By signing up, I agree to the Terms & Conditions": "サインアップすることにより、<1>私は利用規約＆条件</1>および<5>プライバシーポリシー</5>に同意します。",
   "Terms & Conditions": "利用規約",
   "and": "そして",
   "Privacy Policy": "プライバシーポリシー",

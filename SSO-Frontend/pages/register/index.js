@@ -457,7 +457,7 @@ class RegisterPage extends Component {
                   error={touched.accept_tnc && errors.accept_tnc}
                 />
                 <div className={styles.privacyTips}>
-                {/* <Trans i18nKey="By signing up, I agree to the ">
+                <Trans i18nKey="By signing up, I agree to the Terms & Conditions">
                   By signing up, I agree to the 
                   <a
                     style={{
@@ -479,8 +479,8 @@ class RegisterPage extends Component {
                   >
                     Privacy Policy
                   </a>
-                </Trans> */}
-                  {t(`By signing up, I agree to the `)}{' '}
+                </Trans>
+                  {/* {t(`By signing up, I agree to the `)}{' '}
                   <a
                     style={{
                       color: '#c19a53',
@@ -500,7 +500,7 @@ class RegisterPage extends Component {
                     href="https://www.hiinc.com/terms-and-privacy-policy"
                   >
                     {t(`Privacy Policy`)}
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>

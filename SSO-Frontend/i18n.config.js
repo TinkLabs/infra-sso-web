@@ -1,6 +1,6 @@
 module.exports = {
   load: 'currentOnly',
-  fallbackLng: 'en-US',
+  fallbackLng: 'zh-US',
   lngs: [
     'en-US',
     'zh-TW',
