@@ -34,7 +34,7 @@
   "Please accept terms and conditions": "尚未接受条款与条件",
   "Please check your email for further reset password instructions The reset password Code will expire in 24 hours for security reasons": "请查看您的电子邮件以获取重置密码所需的验证码，出于安全原因，验证码将在24小时后到期。",
   "Invalid email address.": "电子邮件地址无效。",
-  "Please enter an valid code": "请输入有效的验证码",
+  "The reset code is incorrect, please try again.": "重设代码不正确，请重试。",
   "Please input the reset password Code which received": "您很快就会在电子邮件中 <br /> 收到密码重设代码。如果在收件箱中看不到电子邮件，<br />请检查垃圾邮件文件夹。",
   "Sorry, verification code verified failed": "对不起，验证码无效",
   "Sorry, This newPassword no change, please fill in the newPassword": "对不起，该密码与上一个您使用的密码一致，请重新输入新的密码",

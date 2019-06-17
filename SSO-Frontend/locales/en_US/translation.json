@@ -56,7 +56,7 @@
   "Duplicated account, please contact the administrator": "Duplicated account, please contact the administrator",
   "Email address": "Email address",
   "Password": "Password",
-  "Please enter an valid code": "Please enter an valid code",
+  "The reset code is incorrect, please try again.": "The reset code is incorrect, please try again.",
   "Passwords don't match.": "Passwords don't match.",
   "Email is not registered": "Email is not registered",
   "Failed to send verification code email when sending verification code": "Failed to send verification code email when sending verification code",

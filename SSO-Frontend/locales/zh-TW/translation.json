@@ -33,7 +33,7 @@
   "Please accept terms and conditions": "尚未接受條款與條件",
   "Please check your email for further reset password instructions The reset password Code will expire in 24 hours for security reasons": "請查看您的電子郵件以獲取重置密碼所需的驗證碼，出於安全原因，驗證碼將在24小時後到期。",
   "Invalid email address.": "電郵地址無效。",
-  "Please enter an valid code": "請輸入有效的驗證碼",
+  "The reset code is incorrect, please try again.": "重設代碼不正確，請再試一次。",
   "Please input the reset password Code which received": "您應該很快就會收到一封電郵，內有 <br /> 密碼重設代碼。如果您在收件匣中看不到這封電郵，<br /> 請檢查垃圾郵件匣。",
   "Sorry, verification code verified failed": "對不起，驗證碼無效",
   "Sorry, This newPassword no change, please fill in the newPassword": "對不起，該密碼與上一個您使用的密碼一致，請重新輸入新的密碼",

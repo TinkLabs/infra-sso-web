@@ -81,7 +81,7 @@ class ForgotPasswordPage extends Component {
     if (this.state.submitted >= 1) {
       if (values.code.length === 4) {
       } else {
-        errors.code = t(`Please enter an valid code`)
+        errors.code = t(`The reset code is incorrect, please try again.`)
       }
     }
     if (this.state.submitted >= 2) {
@@ -189,7 +189,7 @@ class ForgotPasswordPage extends Component {
         })
         .catch(({ response: { data: { retCode, retMsg } } }) => {
           if (retCode === '202009') {
-            setErrors({ code: t(`Please enter an valid code`) })
+            setErrors({ code: t(`The reset code is incorrect, please try again.`) })
           } else if (retCode === '207002') {
             setErrors({ form: t(`No APP ID ,please call customer services`) })
           } else if (retCode === '202004') {
