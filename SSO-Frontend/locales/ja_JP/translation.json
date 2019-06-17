@@ -57,7 +57,6 @@
   "VERIFY ME THE CODE": "コードを確認する",
   "SIGN IN": "サインイン",
   "Continue": "Continue",
-
   "COMPLETE": "完了",
   "Already have an account?": "すでにアカウントをお持ちですか?",
   "Sign in handy member": "handyメンバーにサインイン",
@@ -65,7 +64,7 @@
   "Continue with Facebook": "Facebookでログイン",
   "Sign in with Wechat": "Wechatでサインイン",
   "Continue with Google": "Google+でサインイン",
-  "The password is not correct": "パスワードが正しくありません",
+  "The password is not correct": "パスワードが正しくありません。",
   "VERIFY THE CODE": "コードを確認する",
   "Sorry, the email is not existed, please register firstly": "申し訳ありません。メールアドレスが存在しません。まずはじめに登録してください",
   "Duplicated account, please contact the administrator": "アカウントが重複している場合は、管理者に連絡してください",
