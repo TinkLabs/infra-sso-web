@@ -364,9 +364,7 @@ class ForgotPasswordPage extends Component {
             </div>
           )}
           {submitted === 1 && (
-            <div className={styles.remark}>
-              {t(`Please input the reset password Code which received`)}
-            </div>
+            <div className={styles.remark} dangerouslySetInnerHTML = {{ __html:t(`Please input the reset password Code which received`) }} />
           )}
           {submitted === 2 && (
             <div className={styles.remark}>
@@ -404,7 +402,7 @@ class ForgotPasswordPage extends Component {
               <Input
                 type="text"
                 name="code"
-                placeholder={t(`Verification Code`)}
+                placeholder={t(`Verify Code`)}
                 value={values.code}
                 onChange={handleChange}
                 onBlur={handleBlur}
