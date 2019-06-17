@@ -251,7 +251,7 @@ class RegisterQPage extends Component {
         {!submitted ? (
           <Footer>
             <Button type="submit" disabled={isSubmitting}>
-              {t(`CREATE ACCOUNT`)}
+              {t(`Create Account`)}
             </Button>
           </Footer>
         ) : (

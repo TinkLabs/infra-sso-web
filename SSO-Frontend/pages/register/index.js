@@ -517,7 +517,7 @@ class RegisterPage extends Component {
         {!submitted && (
           <Footer className="register-submit">
             <Button type="submit" disabled={isSubmitting}>
-              {t(`CREATE ACCOUNT`)}
+              {t(`Create Account`)}
             </Button>
           </Footer>
         )}
