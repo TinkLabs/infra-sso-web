@@ -341,7 +341,7 @@ class ForgotPasswordPage extends Component {
       <Container component="form" onSubmit={handleSubmit}>
         {[0, 1].includes(submitted) ? this.renderBackArrow() : null}
         <Header>
-          {submitted === 0 && <span>{t(`Forgot Password`)}</span>}
+          {submitted === 0 && <span>{t(`Forgot your password?`)}</span>}
           {submitted === 1 && (
             <span>{t(`Reset password Code has been sent`)}</span>
           )}

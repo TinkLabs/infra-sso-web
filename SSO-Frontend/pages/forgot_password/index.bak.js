@@ -290,7 +290,7 @@ class ForgotPasswordPage extends Component {
     return (
       <Container component="form" onSubmit={handleSubmit}>
         <Header>
-          {submitted === 0 && <span>{t(`Forgot Password`)}</span>}
+          {submitted === 0 && <span>{t(`Forgot your password?`)}</span>}
           {submitted === 1 && (
             <span>{t(`Reset password Code has been sent`)}</span>
           )}
