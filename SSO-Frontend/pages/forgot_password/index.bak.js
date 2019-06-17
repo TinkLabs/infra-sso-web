@@ -447,7 +447,7 @@ class ForgotPasswordPage extends Component {
         {submitted === 3 && (
           <Footer>
             <Button type="button" href={`/authorize?appid=` + values.appid}>
-              {t(`COMPLETE`)}
+              {t(`Okay`)}
             </Button>
           </Footer>
         )}

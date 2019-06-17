@@ -507,7 +507,7 @@ class ForgotPasswordPage extends Component {
           <Footer className="toBottom">
             <Button type="button" href={`/authorize?appid=` + values.appid}
               className="btn btn-navy btn-m btn-contained">
-              {t(`COMPLETE`)}
+              {t(`Okay`)}
             </Button>
           </Footer>
         )}
