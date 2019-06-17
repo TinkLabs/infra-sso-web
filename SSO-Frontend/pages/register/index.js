@@ -119,7 +119,7 @@ class RegisterPage extends Component {
       !isEmpty(values.password) &&
       values.password !== values.confirm_password
     ) {
-      errors.confirm_password = t(`Password do not match`)
+      errors.confirm_password = t(`Passwords don't match.`)
     }
 
     if (!values.accept_tnc) {
@@ -211,7 +211,7 @@ class RegisterPage extends Component {
         } else if (retCode === '200013') {
           setErrors({
             password: t(
-              `Your password must contain letters and numbers`
+              `Passwords must contain letters & digits.`
             )
           })
         } else if (retCode === '200051') {

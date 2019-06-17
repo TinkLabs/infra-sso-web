@@ -102,7 +102,7 @@ class RegisterQPage extends Component {
         } else if (retCode === '200013') {
           setErrors({
             password: t(
-              `Your password must contain letters and numbers`
+              `Passwords must contain letters & digits.`
             )
           })
         } else if (retCode === '200051') {
