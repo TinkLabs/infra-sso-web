@@ -507,12 +507,10 @@ class RegisterPage extends Component {
           </Content>
         )}
         {submitted && (
-          <Content>
-            {t(`Now you can access our premium features and get exclusive travel offers.`)}. &nbsp;
-            {t(
-              `You may now continue what you were doing, or visit the My Account page to customize your profile.`
-            )}
-          </Content>
+          // <Content>
+            // <div className={styles.slogan} dangerouslySetInnerHTML={{__html: t('Become a hi member')}} />
+            <div dangerouslySetInnerHTML={{__html: t(`Now you can access our premium features and get exclusive travel offers.`)}} />
+          // </Content>
         )}
         {!submitted && (
           <Footer className="register-submit">
