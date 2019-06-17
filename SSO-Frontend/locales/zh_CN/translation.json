@@ -10,7 +10,7 @@
   "Create Account": "创建帐户",
   "Email and Password do not match": "邮箱和密码不匹配",
   "Email has  been used": "邮箱已注册",
-  "Your password must be at least 8 characters": "密码长度至少为8位",
+  "Your password must be at least 8 characters": "密码必须至少为 8 个字符。",
   "Passwords must contain letters & digits.": "密码必须包含字母和数字。",
   "Sorry, new password MUST contain the letter and digits.": "对不起，新密码必须包含字母和数字",
   "Email has already been submitted": "该邮箱已注册",

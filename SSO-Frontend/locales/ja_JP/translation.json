@@ -9,7 +9,7 @@
   "Create Account": "アカウント作成",
   "Email and Password do not match": "メールとパスワードは別のものを使用してください",
   "Email has  been used": "メールアドレスは既に使用されています",
-  "Your password must be at least 8 characters": "パスワードは8文字以上で設定してください",
+  "Your password must be at least 8 characters": "パスワードは8文字以上で設定してください。",
   "Passwords must contain letters & digits.": "パスワードには英数字を含めてください。",
   "Sorry, new password MUST contain the letter and digits.": "すみません、新しいパスワードは手紙とデジタルを含まなければなりません",
   "Email has already been submitted": "電子メールはすでに送信されています",
