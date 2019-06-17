@@ -433,7 +433,7 @@ class ForgotPasswordPage extends Component {
         {submitted === 1 && (
           <Footer>
             <Button type="submit" disabled={isSubmitting}>
-              {t(`VERIFY ME THE CODE`)}
+              {t(`Verify Code`)}
             </Button>
           </Footer>
         )}

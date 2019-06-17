@@ -54,7 +54,7 @@
   "Reset Password Code is expired": "パスワードリセットコードの期限が切れています",
   "Reset password Code  has been sent": "パスワードリセットコードが送信されました",
   "Send the Code": "コードの送信",
-  "VERIFY ME THE CODE": "コードを確認する",
+  "Verify Code": "コード認証",
   "SIGN IN": "サインイン",
   "Continue": "Continue",
   "COMPLETE": "完了",
