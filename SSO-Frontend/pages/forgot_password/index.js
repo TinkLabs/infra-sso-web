@@ -161,7 +161,7 @@ class ForgotPasswordPage extends Component {
         })
     }
 
-    //verify code
+    //Reset code
     if (this.state.submitted === 1) {
       setSubmitting(true)
       values.type = '1'
@@ -402,7 +402,7 @@ class ForgotPasswordPage extends Component {
               <Input
                 type="text"
                 name="code"
-                placeholder={t(`Verify Code`)}
+                placeholder={t(`Reset code`)}
                 value={values.code}
                 onChange={handleChange}
                 onBlur={handleBlur}

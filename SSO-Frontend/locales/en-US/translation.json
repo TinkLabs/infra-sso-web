@@ -77,7 +77,7 @@
   "Please input the reset password Code which received": "You should receive a password reset code in <br /> your email shortly. If you don’t see the email in <br /> your inbox, check your spam folder.",
   "After reset your password ,you will be redirect to Login page and login again": "After reset your password ,you will be redirect to Login page and login again",
   "Your password for hi member has been successfully reset. Please sign in with new password to continue using handy, or visit My Account to edit your personal profile": "Your password for hi member has been successfully reset. Please sign in with new password to continue using handy, or visit My Account to edit your personal profile",
-  "Verify Code": "Verify Code",
+  "Reset code": "Reset code",
   "Re-enter password": "Re-enter password",
   "Send the Code": "Send the Code",
   "VERIFY ME THE CODE": "VERIFY ME THE CODE",
