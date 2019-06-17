@@ -346,7 +346,7 @@ class ForgotPasswordPage extends Component {
             <span>{t(`Enter your reset code`)}</span>
           )}
           {submitted === 2 && (
-            <span>{t(`Please input your new Password`)}</span>
+            <span>{t(`Reset your password`)}</span>
           )}
           {submitted === 3 && (
               <div className="forget-pw-logo-wrapper">
@@ -369,7 +369,7 @@ class ForgotPasswordPage extends Component {
           {submitted === 2 && (
             <div className={styles.remark}>
               {t(
-                `After reset your password ,you will be redirect to Login page and login again`
+                `Please enter a new password to access your account.`
               )}
             </div>
           )}
@@ -499,7 +499,7 @@ class ForgotPasswordPage extends Component {
           <Footer className="forget-pw-submit-code">
             <Button type="submit" disabled={isSubmitting}
               className="btn btn-navy btn-m btn-contained">
-              {t(`RESET PASSWORD`)}
+              {t(`Reset Password`)}
             </Button>
           </Footer>
         )}

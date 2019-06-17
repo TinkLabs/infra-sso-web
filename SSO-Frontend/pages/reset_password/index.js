@@ -151,7 +151,7 @@ class ResetPasswordPage extends Component {
         {!submitted && (
           <Footer>
             <Button type="submit" disabled={isSubmitting}>
-              {t(`RESET PASSWORD`)}
+              {t(`Reset Password`)}
             </Button>
           </Footer>
         )}
