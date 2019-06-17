@@ -343,7 +343,7 @@ class ForgotPasswordPage extends Component {
         <Header>
           {submitted === 0 && <span>{t(`Forgot your password?`)}</span>}
           {submitted === 1 && (
-            <span>{t(`Reset password Code has been sent`)}</span>
+            <span>{t(`Enter your reset code`)}</span>
           )}
           {submitted === 2 && (
             <span>{t(`Please input your new Password`)}</span>

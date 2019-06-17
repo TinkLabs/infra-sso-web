@@ -46,7 +46,7 @@
   "The email is not existed when sending verification code, please register firstly": "发送验证码时不存在电子邮件，请先注册:",
   "REGISTER": "注册",
   "RESET PASSWORD": "重置密码",
-  "Reset password Code has been sent": "验证码已发送",
+  "Enter your reset code": "输入重设代码",
   "Register hi member": "注册 <1>hi</1> 会员",
   "Create an account": "创建帐户",
   "Register using Email": "使用邮箱注册",

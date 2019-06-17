@@ -70,7 +70,7 @@
   "The type incorrect , please correct type": "The type incorrect , please correct type",
   "Your password must be at least 8 characters": "Your password must be at least 8 characters",
   "Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering": "Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering",
-  "Reset password Code has been sent": "Reset password Code has been sent",
+  "Enter your reset code": "Enter your reset code",
   "Please input your new Password": "Please input your new Password",
   "Your password has been reset ": "Your password has been reset ",
   "Continue to receive a password reset code.": "Continue to receive a password reset code.",

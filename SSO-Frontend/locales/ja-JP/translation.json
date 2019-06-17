@@ -45,7 +45,7 @@
   "The email is not existed when sending verification code, please register firstly": "確認コードを送信する際の送り先メールアドレスが存在しません。はじめに登録してください:",
   "REGISTER": "登録",
   "RESET PASSWORD": "パスワードを再設定する",
-  "Reset password Code has been sent": "パスワードリセットコードが送信されました",
+  "Enter your reset code": "リセットコードを入力してください",
   "Please input your new Password": "新しいパスワードを入力してください",
   "Register handy member": "handyメンバーに登録する",
   "Create an account": "アカウントを作成する",

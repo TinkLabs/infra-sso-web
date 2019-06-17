@@ -45,7 +45,7 @@
   "The email is not existed when sending verification code, please register firstly": "發送驗證碼時不存在電子郵件，請先註冊:",
   "REGISTER": "註冊",
   "RESET PASSWORD": "重置密碼",
-  "Reset password Code has been sent": "驗證碼已發送",
+  "Enter your reset code": "輸入重設代碼",
   "Register handy member": "註冊 <1>handy</1> 會員",
   "Create an account": "建立一個帳戶",
   "Register using Email": "使用郵箱註冊",
