@@ -14,9 +14,9 @@ class IndexPage extends Component {
     const jwt = query.jwt
 
     //解决ios 中webview 后退时导致环境变量失效
-    console.log(process.env, 299999)
+    // console.log(process.env.SERVERURI, '299999 process.env')
     if (!process.env.SERVERURI || !process.env.URL) {
-      // location.reload()
+      location.reload()
     }
 
     const fbLoginUri =
@@ -59,7 +59,6 @@ class IndexPage extends Component {
   }
 
   componentDidMount() {
-    console.log(process.env, 299999)
 
     this.makeMixpanelTrack('SSO Screen View')
 

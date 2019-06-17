@@ -388,7 +388,7 @@ class ForgotPasswordPage extends Component {
               <Input
                 type="text"
                 name="email"
-                placeholder={t(Email address)}
+                placeholder={t('Email address')}
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
