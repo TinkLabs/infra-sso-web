@@ -311,7 +311,7 @@ class RegisterPage extends Component {
             </div>
           )}
           {submitted && (
-            <Trans i18nKey="Thank you for becoming a hi member!">
+            <Trans i18nKey="Thank you for joining hi">
               Thank you for becoming a <b>hi</b> member!
             </Trans>
           )}
