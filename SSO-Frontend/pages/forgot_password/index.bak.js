@@ -297,7 +297,7 @@ class ForgotPasswordPage extends Component {
           {submitted === 2 && (
             <span>{t(`Reset your password`)}</span>
           )}
-          {submitted === 3 && <span>{t(`Your password has been reset `)}</span>}
+          {submitted === 3 && <span>{t(`Password reset successfully `)}</span>}
         </Header>
         <Content>
           {submitted === 0 && (

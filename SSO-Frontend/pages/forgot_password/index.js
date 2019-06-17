@@ -353,7 +353,7 @@ class ForgotPasswordPage extends Component {
                 <span className="logo icon icon-general_check_circle_24px"></span>
               </div>
           )}
-          {submitted === 3 && <span>{t(`Your password has been reset `)}</span>}
+          {submitted === 3 && <span>{t(`Password reset successfully `)}</span>}
         </Header>
         <Content>
           {submitted === 0 && (
@@ -376,7 +376,7 @@ class ForgotPasswordPage extends Component {
           {submitted === 3 && (
             <div className={styles.remark}>
               {t(
-                `Your password for hi member has been successfully reset. Please sign in with new password to continue using handy, or visit My Account to edit your personal profile`
+                `Your hi membership password has been successfully reset. You are now logged in, and can continue to use handy, or visit My Account to edit your personal profile.`
               )}
             </div>
           )}

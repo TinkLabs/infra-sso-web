@@ -94,7 +94,7 @@ class ResetPasswordPage extends Component {
       <Container component="form" onSubmit={handleSubmit}>
         <Header>
           {!submitted && <span>{t(`Reset Password`)}</span>}
-          {submitted && <span>{t(`Your password has been reset`)}</span>}
+          {submitted && <span>{t(`Password reset successfully`)}</span>}
         </Header>
         {!submitted && (
           <Content>
