@@ -1,0 +1,63 @@
+.wrapper {
+  margin-bottom: 20px;
+}
+.container {
+  display: table;
+  width: 100%;
+  position: relative;
+}
+.errorContainer {
+  border-bottom-color: #ff0102;
+}
+.input {
+  display: table-cell;
+  width: 100%;
+  padding: 8px 4px;
+  border: none;
+  color: #ffffff;
+  background-color: transparent;
+  outline: none;
+}
+.append {
+  display: table-cell;
+  width: 1%;
+  text-align: center;
+  vertical-align: middle;
+}
+.prepend {
+  display: table-cell;
+  width: 1%;
+  text-align: center;
+  vertical-align: middle;
+}
+.prepend img {
+  width: 20px !important;
+}
+.error {
+  margin-top: 5px;
+  color: #ff2020;
+  font-size: 11px;
+}
+.optionCont {
+  position: absolute;
+  width: 100%;
+  max-height: 120px;
+  z-index: 9;
+  top: 35px;
+  border: 1px solid;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 12px 33px 0 rgba(0, 0, 0, 0.16);
+  color: #999;
+  left: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+  z-index: 10;
+}
+.optionCont .optionItem {
+  width: 100%;
+  padding: 0 10px;
+  height: 30px;
+  line-height: 30px;
+}

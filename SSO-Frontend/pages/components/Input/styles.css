@@ -1,0 +1,45 @@
+.wrapper {
+  margin-bottom: 8px;
+}
+.container {
+  display: table;
+  width: 100%;
+}
+.errorContainer {
+  border-bottom-color: #ff0102;
+}
+.input {
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.56);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 20px;
+  letter-spacing: normal;
+  height: 50px;
+  padding: 0 36px 0 16px;
+  border-radius: 4px;
+  outline: none;
+}
+.append {
+  text-align: center;
+  vertical-align: middle;
+}
+.prepend {
+  text-align: center;
+  vertical-align: middle;
+}
+.error {
+  color: #da291c;
+  margin-top: 4px;
+  padding-left: 16px;
+  font-family: Montserrat;
+  font-size: 10px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 12px;
+  text-align: start;
+}

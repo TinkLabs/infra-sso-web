@@ -1,18 +1,34 @@
-
 .line {
     position: relative;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #ffffff;
-    opacity: 0.3;
+    // margin-top: 30px;
+    // margin-bottom: 30px;
+    // border-bottom: 1px solid #ffffff;
+    // opacity: 0.3;
 
-    & > span {
+    width: 100%;
+    height: 1px;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, .32);
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    &>span {
         position: absolute;
+        width: 45px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 4px 8px;
         font-size: 12px;
-        background-color: #07183a;
+        // background-color: #07183a;
+        background: #ffffff;
+
+        color: rgba(0, 0, 0, 0.32);
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0px;
+        line-height: 20px;
+        text-align: center;
     }
 }

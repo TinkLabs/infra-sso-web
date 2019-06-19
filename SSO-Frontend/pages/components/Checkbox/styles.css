@@ -1,0 +1,50 @@
+.label {
+  display: table;
+  width: 100%;
+}
+.control {
+  position: relative;
+  display: table-cell;
+  vertical-align: top;
+}
+.label {
+  display: table-cell;
+  width: 100%;
+  padding-left: 15px;
+  vertical-align: top;
+}
+.checkbox {
+  border-radius: 2px;
+  text-align: center;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.56);
+  color: rgba(0, 0, 0, 0.56);
+}
+.checkbox > svg {
+  visibility: hidden;
+}
+.input {
+  position: absolute;
+  z-index: -1;
+  visibility: hidden;
+  width: 0;
+}
+.input:checked + .checkbox {
+  background-color: #002855;
+  color: #ffffff;
+}
+.input:checked + .checkbox > svg {
+  visibility: visible;
+  width: fit-content;
+}
+.error {
+  margin-top: 5px;
+  color: #ff2020;
+  font-size: 11px;
+}

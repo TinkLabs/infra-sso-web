@@ -42,11 +42,11 @@ class RegisterQPage extends Component {
     let errors = {}
 
     if (!isEmail(values.email)) {
-      errors.email = t(`Please enter an valid email.`)
+      errors.email = t(`Invalid email address.`)
     }
 
     if (isEmpty(values.password)) {
-      errors.password = t(`Please enter the password.`)
+      errors.password = t(`Incorrect password.`)
     }
 
     if (
@@ -102,7 +102,7 @@ class RegisterQPage extends Component {
         } else if (retCode === '200013') {
           setErrors({
             password: t(
-              `Password is too simple, it MUST contain the uppercase and lowercase letters, numbers, special character when registering.`
+              `Passwords must contain letters & digits.`
             )
           })
         } else if (retCode === '200051') {
@@ -179,7 +179,7 @@ class RegisterQPage extends Component {
               <Input
                 type="text"
                 name="email"
-                placeholder="Email Address"
+                placeholder="Email address"
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -212,7 +212,7 @@ class RegisterQPage extends Component {
                 }}
                 type="password"
                 name="confirm_password"
-                placeholder="Confirm Password"
+                placeholder="Re-enter password"
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -234,7 +234,7 @@ class RegisterQPage extends Component {
                 error={touched.accept_tnc && errors.accept_tnc}
               >
                 {t(
-                  `By signing up, I agree to handy’s Terms & Conditions and Privacy Policy.`
+                  `By signing up, I agree to the Terms & Conditions and Privacy Policy.`
                 )}
               </Checkbox>
             </div>
@@ -251,7 +251,7 @@ class RegisterQPage extends Component {
         {!submitted ? (
           <Footer>
             <Button type="submit" disabled={isSubmitting}>
-              {t(`CREATE ACCOUNT`)}
+              {t(`Create Account`)}
             </Button>
           </Footer>
         ) : (

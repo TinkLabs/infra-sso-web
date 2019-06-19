@@ -1,30 +1,69 @@
-.header {
-    color: rgba(255, 255, 255, 0.7);
+.back-row {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  position: fixed;
+  background: #0b1733;
+  padding-left: 16px;
+  top: 16px;
 
-    i {
-        color: #fff;
-    }
+  .back-arrow {
+    width: 40px;
+    height: 40px;
+    background: url('/static/icons/ic_arrow_back_white2.png') no-repeat center;
+    background-size: 30px;
+    cursor: pointer;
+  }
+}
+
+.header {
+  // color: rgba(255, 255, 255, 0.7);
+  i {
+    color: #fff;
+  }
 }
 
 .remark {
-    margin-bottom: 75px;
-    color: rgba(255, 255, 255, 0.7);
+  // margin-bottom: 75px;
+  // color: rgba(255, 255, 255, 0.7);
+
+  display: none;
 }
 
 .form {
-    .icon {
-        width: 24px;
-    }
+  .icon {
+    // width: 24px;
+    display: none;
+  }
 }
 
 .forgotPassword {
-    margin-bottom: 50px;
-    text-align: right;
-    font-size: 12px;
-    opacity: 0.3;
+  // margin-bottom: 50px;
+  // font-size: 12px;
+  // opacity: 0.3;
+  text-align: right;
+  margin-top: -28px;
+  margin-bottom: 44px;
+  padding-right: 4px;
+  width: unset;
 
-    a {
-        color: #ffffff;
-        text-decoration-line: none;
-    }
+  
+  a {
+    width: unset;
+    float: right;
+    cursor: pointer;
+    margin-top: 6px;
+    color: #c19a53;
+    
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 14px;
+    text-decoration: underline;
+
+
+    // color: #ffffff;
+    // text-decoration-line: none;
+  }
 }

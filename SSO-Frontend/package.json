@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon app.js --presets env --plugins transform-object-rest-spread",
     "start": "npm run start:next && npm run start:server",
-    "start:server": "babel-node app.js --presets env --plugins transform-object-rest-spread",
+    "start:server": "nodemon app.js --presets env --plugins transform-object-rest-spread",
     "start:next": "next build",
     "i18n:scan": "i18next-scanner 'pages/**/*.js'"
   },
@@ -34,6 +34,7 @@
     "less": "^3.8.1",
     "lodash": "^4.17.10",
     "md5": "^2.2.1",
+    "mixpanel-browser": "^2.26.0",
     "moment": "^2.22.2",
     "mysql2": "^1.6.1",
     "next": "^6.1.1",
@@ -49,6 +50,7 @@
     "react-svg": "^6.0.3",
     "reset-css": "^4.0.1",
     "sequelize": "^4.38.0",
+    "serve-favicon": "^2.5.0",
     "source-map-support": "^0.5.9",
     "validate.js": "^0.12.0",
     "validator": "^10.7.0"
