@@ -10,28 +10,35 @@
   border-bottom-color: #ff0102;
 }
 .input {
-  display: table-cell;
-  width: 100%;
-  padding: 8px 4px;
-  border: none;
-  color: #ffffff;
   background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.56);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 20px;
+  letter-spacing: normal;
+  height: 50px;
+  padding: 0 36px 0 16px;
+  border-radius: 4px;
   outline: none;
 }
 .append {
-  display: table-cell;
-  width: 1%;
-  text-align: center;
-  vertical-align: middle;
+  display: none;
 }
 .prepend {
   display: table-cell;
-  width: 1%;
   text-align: center;
   vertical-align: middle;
+  position: absolute;
+  top: 40%;
+  left: 90%;
+  width: 40px;
 }
 .prepend img {
   width: 20px !important;
+  display: block !important;
 }
 .error {
   margin-top: 5px;
@@ -43,7 +50,7 @@
   width: 100%;
   max-height: 120px;
   z-index: 9;
-  top: 35px;
+  top: 49px;
   border: 1px solid;
   background: #fff;
   border-radius: 4px;
