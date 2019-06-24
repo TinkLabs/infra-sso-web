@@ -39,7 +39,7 @@ class ResetPasswordPage extends Component {
     let errors = {}
 
     if (isEmpty(values.password)) {
-      errors.password = t(`Please enter the password.`)
+      errors.password = t(`Incorrect password.`)
     }
 
     if (
@@ -94,7 +94,7 @@ class ResetPasswordPage extends Component {
       <Container component="form" onSubmit={handleSubmit}>
         <Header>
           {!submitted && <span>{t(`Reset Password`)}</span>}
-          {submitted && <span>{t(`Your password has been reset`)}</span>}
+          {submitted && <span>{t(`Password reset successfully`)}</span>}
         </Header>
         {!submitted && (
           <Content>
@@ -125,7 +125,7 @@ class ResetPasswordPage extends Component {
               <Input
                 type="password"
                 name="confirm_password"
-                placeholder="Confirm Password"
+                placeholder="Re-enter password"
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -151,7 +151,7 @@ class ResetPasswordPage extends Component {
         {!submitted && (
           <Footer>
             <Button type="submit" disabled={isSubmitting}>
-              {t(`RESET PASSWORD`)}
+              {t(`Reset Password`)}
             </Button>
           </Footer>
         )}

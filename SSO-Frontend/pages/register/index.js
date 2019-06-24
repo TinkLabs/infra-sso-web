@@ -108,18 +108,18 @@ class RegisterPage extends Component {
     }
 
     if (!isEmail(values.email)) {
-      errors.email = t(`Please enter an valid email`)
+      errors.email = t(`Invalid email address.`)
     }
 
     if (isEmpty(values.password)) {
-      errors.password = t(`Please enter the password`)
+      errors.password = t(`Incorrect password.`)
     }
 
     if (
       !isEmpty(values.password) &&
       values.password !== values.confirm_password
     ) {
-      errors.confirm_password = t(`Password do not match`)
+      errors.confirm_password = t(`Passwords don't match.`)
     }
 
     if (!values.accept_tnc) {
@@ -211,7 +211,7 @@ class RegisterPage extends Component {
         } else if (retCode === '200013') {
           setErrors({
             password: t(
-              `Your password must contain letters and numbers`
+              `Passwords must contain letters & digits.`
             )
           })
         } else if (retCode === '200051') {
@@ -296,7 +296,7 @@ class RegisterPage extends Component {
         {this.renderBackArrow()}
         <Header>
           {!submitted && (
-            <Trans i18nKey="Register for hi membership">
+            <Trans i18nKey="Create an account">
 
               {/* i18nKey="Create an account" */}
 
@@ -311,7 +311,7 @@ class RegisterPage extends Component {
             </div>
           )}
           {submitted && (
-            <Trans i18nKey="Thank you for becoming a hi member!">
+            <Trans i18nKey="Thank you for joining hi">
               Thank you for becoming a <b>hi</b> member!
             </Trans>
           )}
@@ -319,7 +319,7 @@ class RegisterPage extends Component {
         {!submitted && (
           <Content>
             <div className={styles.remark}>
-              {t(`Please enter your email address and set your password:`)}
+              {t(`Become a hi member and get access to premium features.`)}
             </div>
             <div className={styles.form}>
               {PAGE_FOR770.includes(this.props.clientId) ? (
@@ -359,7 +359,7 @@ class RegisterPage extends Component {
               <Input
                 type="text"
                 name="email"
-                placeholder={t(`email address`)}
+                placeholder={t("Email address")}
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -399,7 +399,7 @@ class RegisterPage extends Component {
               <Input
                 type={confirmPasswordType}
                 name="confirm_password"
-                placeholder={t(`Confirm Password`)}
+                placeholder={t(`Re-enter password`)}
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -457,7 +457,30 @@ class RegisterPage extends Component {
                   error={touched.accept_tnc && errors.accept_tnc}
                 />
                 <div className={styles.privacyTips}>
-                  {t(`By signing up, I agree to hi’s`)}{' '}
+                <Trans i18nKey="By signing up, I agree to the Terms & Conditions">
+                  By signing up, I agree to the 
+                  <a
+                    style={{
+                      color: '#c19a53',
+                      textDecoration: 'underline',
+                      display: 'contents'
+                    }}
+                    href="https://www.hiinc.com/terms-and-privacy-policy"
+                  >
+                    Terms & Conditions
+                  </a>{' '}
+                  and{' '}
+                  <a
+                    style={{
+                      color: '#c19a53',
+                      textDecoration: 'underline'
+                    }}
+                    href="https://www.hiinc.com/terms-and-privacy-policy"
+                  >
+                    Privacy Policy
+                  </a>
+                </Trans>
+                  {/* {t(`By signing up, I agree to the `)}{' '}
                   <a
                     style={{
                       color: '#c19a53',
@@ -477,25 +500,23 @@ class RegisterPage extends Component {
                     href="https://www.hiinc.com/terms-and-privacy-policy"
                   >
                     {t(`Privacy Policy`)}
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
           </Content>
         )}
         {submitted && (
-          <Content>
-            {t(`Now you can access our premium features and get exclusive travel offers.`)}. &nbsp;
-            {t(
-              `You may now continue what you were doing, or visit the My Account page to customize your profile.`
-            )}
-          </Content>
+          // <Content>
+            // <div className={styles.slogan} dangerouslySetInnerHTML={{__html: t('Become a hi member')}} />
+            <div dangerouslySetInnerHTML={{__html: t(`Now you can access our premium features and get exclusive travel offers.`)}} />
+          // </Content>
         )}
         {!submitted && (
           <Footer className="register-submit">
             <Button type="submit" disabled={isSubmitting}
               className="btn btn-navy btn-m btn-contained">
-              {t(`CREATE ACCOUNT`)}
+              {t(`Create Account`)}
             </Button>
           </Footer>
         )}

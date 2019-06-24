@@ -56,11 +56,11 @@ class AuthorizePage extends Component {
     let errors = {}
 
     if (!isEmail(values.email)) {
-      errors.email = t(`Please enter an valid email`)
+      errors.email = t(`Invalid email address.`)
     }
 
     if (isEmpty(values.password)) {
-      errors.password = t(`Please enter the password`)
+      errors.password = t(`Incorrect password.`)
     }
 
     return errors
@@ -204,7 +204,7 @@ class AuthorizePage extends Component {
             <Input
               type="text"
               name="email"
-              placeholder={t(`email address`)}
+              placeholder={t('Email address')}
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -245,7 +245,7 @@ class AuthorizePage extends Component {
           <Button type="submit" disabled={isSubmitting}
             className="btn btn-navy btn-m btn-contained">
             {' '}
-            {t(`SIGN IN`)}{' '}
+            {t(`Continue`)}{' '}
           </Button>
         </Footer>
       </Container>

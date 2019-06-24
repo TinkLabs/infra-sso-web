@@ -75,18 +75,18 @@ class ForgotPasswordPage extends Component {
     let errors = {}
 
     if (!isEmail(values.email)) {
-      errors.email = t(`Please enter an valid email`)
+      errors.email = t(`Invalid email address.`)
     }
 
     if (this.state.submitted >= 1) {
       if (values.code.length === 4) {
       } else {
-        errors.code = t(`Please enter an valid code`)
+        errors.code = t(`The reset code is incorrect, please try again.`)
       }
     }
     if (this.state.submitted >= 2) {
       if (isEmpty(values.password)) {
-        errors.password = t(`Please enter the password`)
+        errors.password = t(`Incorrect password.`)
       }
 
       if (isEmpty(values.confirm_password)) {
@@ -98,7 +98,7 @@ class ForgotPasswordPage extends Component {
         !isEmpty(values.confirm_password) &&
         values.password !== values.confirm_password
       ) {
-        errors.confirm_password = t(`Password do not match`)
+        errors.confirm_password = t(`Passwords don't match.`)
       }
     }
 
@@ -161,7 +161,7 @@ class ForgotPasswordPage extends Component {
         })
     }
 
-    //verify code
+    //Reset code
     if (this.state.submitted === 1) {
       setSubmitting(true)
       values.type = '1'
@@ -189,7 +189,7 @@ class ForgotPasswordPage extends Component {
         })
         .catch(({ response: { data: { retCode, retMsg } } }) => {
           if (retCode === '202009') {
-            setErrors({ code: t(`Please enter an valid code`) })
+            setErrors({ code: t(`The reset code is incorrect, please try again.`) })
           } else if (retCode === '207002') {
             setErrors({ form: t(`No APP ID ,please call customer services`) })
           } else if (retCode === '202004') {
@@ -341,44 +341,42 @@ class ForgotPasswordPage extends Component {
       <Container component="form" onSubmit={handleSubmit}>
         {[0, 1].includes(submitted) ? this.renderBackArrow() : null}
         <Header>
-          {submitted === 0 && <span>{t(`Forgot Password`)}</span>}
+          {submitted === 0 && <span>{t(`Forgot your password?`)}</span>}
           {submitted === 1 && (
-            <span>{t(`Reset password Code has been sent`)}</span>
+            <span>{t(`Enter your reset code`)}</span>
           )}
           {submitted === 2 && (
-            <span>{t(`Please input your new Password`)}</span>
+            <span>{t(`Reset your password`)}</span>
           )}
           {submitted === 3 && (
               <div className="forget-pw-logo-wrapper">
                 <span className="logo icon icon-general_check_circle_24px"></span>
               </div>
           )}
-          {submitted === 3 && <span>{t(`Your password has been reset `)}</span>}
+          {submitted === 3 && <span>{t(`Password reset successfully `)}</span>}
         </Header>
         <Content>
           {submitted === 0 && (
             <div className={styles.remark}>
               {t(
-                `Please enter your email address to receive a reset password Code:`
+                `Continue to receive a password reset code.`
               )}
             </div>
           )}
           {submitted === 1 && (
-            <div className={styles.remark}>
-              {t(`Please input the reset password Code which received`)}
-            </div>
+            <div className={styles.remark} dangerouslySetInnerHTML = {{ __html:t(`Please input the reset password Code which received`) }} />
           )}
           {submitted === 2 && (
             <div className={styles.remark}>
               {t(
-                `After reset your password ,you will be redirect to Login page and login again`
+                `Please enter a new password to access your account.`
               )}
             </div>
           )}
           {submitted === 3 && (
             <div className={styles.remark}>
               {t(
-                `Your password for hi member has been successfully reset. Please sign in with new password to continue using handy, or visit My Account to edit your personal profile`
+                `Your hi membership password has been successfully reset. You are now logged in. You can visit My Account to edit your personal profile.`
               )}
             </div>
           )}
@@ -388,7 +386,7 @@ class ForgotPasswordPage extends Component {
               <Input
                 type="text"
                 name="email"
-                placeholder={t(`email address`)}
+                placeholder={t('Email address')}
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -404,7 +402,7 @@ class ForgotPasswordPage extends Component {
               <Input
                 type="text"
                 name="code"
-                placeholder={t(`Verification Code`)}
+                placeholder={t(`Reset code`)}
                 value={values.code}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -445,7 +443,7 @@ class ForgotPasswordPage extends Component {
               <Input
                 type={confirmPasswordType}
                 name="confirm_password"
-                placeholder={t(`Confirm Password`)}
+                placeholder={t(`Re-enter password`)}
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -485,7 +483,7 @@ class ForgotPasswordPage extends Component {
           <Footer className="forget-pw-get-code">
             <Button type="submit" disabled={isSubmitting}
               className="btn btn-navy btn-m btn-contained">
-              {t(`SEND ME THE CODE`)}
+              {t(`Send the Code`)}
             </Button>
           </Footer>
         )}
@@ -493,7 +491,7 @@ class ForgotPasswordPage extends Component {
           <Footer className="forget-pw-submit-code">
             <Button type="submit" disabled={isSubmitting}
               className="btn btn-navy btn-m btn-contained">
-              {t(`VERIFY ME THE CODE`)}
+              {t(`Verify Code`)}
             </Button>
           </Footer>
         )}
@@ -501,7 +499,7 @@ class ForgotPasswordPage extends Component {
           <Footer className="forget-pw-submit-code">
             <Button type="submit" disabled={isSubmitting}
               className="btn btn-navy btn-m btn-contained">
-              {t(`RESET PASSWORD`)}
+              {t(`Reset Password`)}
             </Button>
           </Footer>
         )}
@@ -509,7 +507,7 @@ class ForgotPasswordPage extends Component {
           <Footer className="toBottom">
             <Button type="button" href={`/authorize?appid=` + values.appid}
               className="btn btn-navy btn-m btn-contained">
-              {t(`COMPLETE`)}
+              {t(`Okay`)}
             </Button>
           </Footer>
         )}
