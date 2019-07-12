@@ -254,6 +254,7 @@ class RegisterPage extends Component {
         return null
         break
       case '7.8.0':
+        // dont know why 780 define back, just remove
         return (
           <div className={styles['back-row']}>
             <div
@@ -293,7 +294,8 @@ class RegisterPage extends Component {
 
     return (
       <Container component="form" onSubmit={handleSubmit}>
-        {this.renderBackArrow()}
+        {/* dont know why 780 define back, just remove */}
+        {/* {this.renderBackArrow()} */}
         <Header>
           {!submitted && (
             <Trans i18nKey="Create an account">

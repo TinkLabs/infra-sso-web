@@ -233,7 +233,8 @@ class IndexPage extends Component {
 
     return (
       <Container>
-        {this.renderBackArrow()}
+        {/* dont know why 780 define back, just remove */}
+        {/* {this.renderBackArrow()} */}
         <Content>
           <div className={styles.logo}>
             <img src="/static/logo_hiinc.svg" />

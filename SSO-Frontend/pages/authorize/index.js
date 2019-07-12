@@ -184,7 +184,8 @@ class AuthorizePage extends Component {
 
     return (
       <Container component="form" onSubmit={handleSubmit}>
-        {this.renderBackArrow()}
+        {/* dont know why 780 define back, just remove */}
+        {/* {this.renderBackArrow()} */}
 
         {/* <Header>
           <Trans i18nKey="hi member sign in">
