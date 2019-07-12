@@ -339,7 +339,8 @@ class ForgotPasswordPage extends Component {
 
     return (
       <Container component="form" onSubmit={handleSubmit}>
-        {[0, 1].includes(submitted) ? this.renderBackArrow() : null}
+        {/* dont know why 780 define back, just remove */}
+        {/* {[0, 1].includes(submitted) ? this.renderBackArrow() : null} */}
         <Header>
           {submitted === 0 && <span>{t(`Forgot your password?`)}</span>}
           {submitted === 1 && (
